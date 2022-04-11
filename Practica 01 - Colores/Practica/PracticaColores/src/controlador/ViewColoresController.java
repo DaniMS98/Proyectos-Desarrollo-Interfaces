@@ -38,7 +38,10 @@ public class ViewColoresController implements Initializable, ChangeListener {
     private Button btnGuardar;
     
     @FXML
-    private ListView listView1;
+    private ListView<Color> listView1;
+    
+    @FXML
+    private Color miColor;
     
     int miSlider1, miSlider2, miSlider3;
     
@@ -48,11 +51,23 @@ public class ViewColoresController implements Initializable, ChangeListener {
         slider1.valueProperty().addListener(this);
         slider2.valueProperty().addListener(this);
         slider3.valueProperty().addListener(this);
+        
+        listView1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Color>() {
+           
+            @Override
+            public void changed(ObservableValue<? extends Color> observable, Color oldValue, Color newValue) {
+              
+                miColor = listView1.getSelectionModel().getSelectedItem();
+                lbColorRGB.setBackground(new Background(new BackgroundFill(miColor, CornerRadii.EMPTY, Insets.EMPTY)));
+                
+            }
+            
+        });
     }    
 
     private void generarColorRGB() {
         
-        Color miColor = Color.rgb(miSlider1, miSlider2, miSlider3);
+        miColor = Color.rgb(miSlider1, miSlider2, miSlider3);
         lbColorRGB.setBackground(new Background(new BackgroundFill(miColor, CornerRadii.EMPTY, Insets.EMPTY)));
         
     }
@@ -74,5 +89,11 @@ public class ViewColoresController implements Initializable, ChangeListener {
         generarColorRGB();
         
     }
-  
+    
+    @FXML
+    private void onClickGuardar(ActionEvent event) {
+        
+        listView1.getItems().add(Color.rgb(miSlider1, miSlider2, miSlider3));
+    }
+    
 }

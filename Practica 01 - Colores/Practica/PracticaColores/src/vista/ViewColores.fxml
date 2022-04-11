@@ -17,7 +17,7 @@
             <Font name="Corbel Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="btnGuardar" alignment="CENTER" layoutX="136.0" layoutY="410.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="200.0" text="Guardar" textAlignment="CENTER" AnchorPane.leftAnchor="136.0" AnchorPane.topAnchor="410.0">
+      <Button fx:id="btnGuardar" alignment="CENTER" layoutX="136.0" layoutY="410.0" mnemonicParsing="false" onAction="#onClickGuardar" prefHeight="45.0" prefWidth="200.0" text="Guardar" textAlignment="CENTER" AnchorPane.leftAnchor="136.0" AnchorPane.topAnchor="410.0">
          <font>
             <Font name="Corbel Bold" size="14.0" />
          </font>
