@@ -48,6 +48,9 @@ public class ViewColoresController implements Initializable, ChangeListener {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+        miColor = Color.rgb(0, 0, 0);
+        lbColorRGB.setBackground(new Background(new BackgroundFill(miColor, CornerRadii.EMPTY, Insets.EMPTY)));
+        
         slider1.valueProperty().addListener(this);
         slider2.valueProperty().addListener(this);
         slider3.valueProperty().addListener(this);

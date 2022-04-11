@@ -5,39 +5,48 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ViewColoresController">
    <children>
-      <Slider fx:id="slider1" layoutX="45.0" layoutY="57.0" majorTickUnit="20.0" max="255.0" minorTickCount="20" prefHeight="37.0" prefWidth="371.0" showTickLabels="true" showTickMarks="true" value="127.0" AnchorPane.bottomAnchor="429.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="384.0" AnchorPane.topAnchor="60.0" />
-      <Slider fx:id="slider2" layoutX="48.0" layoutY="132.0" majorTickUnit="20.0" max="255.0" minorTickCount="20" prefHeight="37.0" prefWidth="371.0" showTickLabels="true" showTickMarks="true" value="127.0" AnchorPane.bottomAnchor="328.30078125" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="379.0" AnchorPane.topAnchor="160.0" />
-      <Slider fx:id="slider3" layoutX="48.0" layoutY="244.0" majorTickUnit="20.0" max="255.0" minorTickCount="20" prefHeight="37.0" prefWidth="371.0" showTickLabels="true" showTickMarks="true" value="127.0" AnchorPane.bottomAnchor="228.30078125" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="379.0" AnchorPane.topAnchor="260.0" />
-      <Label fx:id="txtRGB" layoutX="50.0" layoutY="342.0" prefHeight="45.0" prefWidth="371.0" text="Color (RGB): " AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="320.0">
-         <font>
-            <Font name="Corbel Bold" size="18.0" />
-         </font>
-      </Label>
-      <Button fx:id="btnGuardar" alignment="CENTER" layoutX="136.0" layoutY="410.0" mnemonicParsing="false" onAction="#onClickGuardar" prefHeight="45.0" prefWidth="200.0" text="Guardar" textAlignment="CENTER" AnchorPane.leftAnchor="136.0" AnchorPane.topAnchor="410.0">
-         <font>
-            <Font name="Corbel Bold" size="14.0" />
-         </font>
-      </Button>
-      <ListView fx:id="listView1" layoutX="494.0" layoutY="320.0" prefHeight="191.0" prefWidth="277.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="320.0" />
-      <Label fx:id="txtR" layoutX="58.0" layoutY="14.0" prefHeight="35.0" prefWidth="110.0" text="R:" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="15.0">
-         <font>
-            <Font name="Corbel Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="txtG" layoutX="50.0" layoutY="113.0" prefHeight="35.0" prefWidth="110.0" text="G:" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="115.0">
-         <font>
-            <Font name="Corbel Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="txtB" layoutX="50.0" layoutY="210.0" prefHeight="35.0" prefWidth="110.0" text="B:" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="215.0">
-         <font>
-            <Font name="Corbel Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="lbColorRGB" layoutX="478.0" layoutY="54.0" prefHeight="243.0" prefWidth="277.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="60.0" />
+      <Pane layoutX="5.0" layoutY="-6.0" prefHeight="526.0" prefWidth="444.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Slider fx:id="slider1" layoutX="28.0" layoutY="72.0" majorTickUnit="20.0" max="255.0" minorTickCount="20" prefHeight="37.0" prefWidth="371.0" showTickLabels="true" showTickMarks="true" />
+            <Slider fx:id="slider2" layoutX="28.0" layoutY="175.0" majorTickUnit="20.0" max="255.0" minorTickCount="20" prefHeight="37.0" prefWidth="371.0" showTickLabels="true" showTickMarks="true" />
+            <Slider fx:id="slider3" layoutX="28.0" layoutY="276.0" majorTickUnit="20.0" max="255.0" minorTickCount="20" prefHeight="37.0" prefWidth="371.0" showTickLabels="true" showTickMarks="true" />
+            <Label fx:id="txtG" layoutX="28.0" layoutY="125.0" prefHeight="35.0" prefWidth="110.0" text="G:">
+               <font>
+                  <Font name="Corbel Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtB" layoutX="28.0" layoutY="228.0" prefHeight="35.0" prefWidth="110.0" text="B:">
+               <font>
+                  <Font name="Corbel Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtR" layoutX="28.0" layoutY="25.0" prefHeight="35.0" prefWidth="110.0" text="R:">
+               <font>
+                  <Font name="Corbel Bold" size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnGuardar" alignment="CENTER" layoutX="122.0" layoutY="417.0" mnemonicParsing="false" onAction="#onClickGuardar" prefHeight="45.0" prefWidth="200.0" text="Guardar" textAlignment="CENTER">
+               <font>
+                  <Font name="Corbel Bold" size="14.0" />
+               </font>
+            </Button>
+            <Label fx:id="txtRGB" layoutX="28.0" layoutY="347.0" prefHeight="45.0" prefWidth="371.0" text="Color (RGB): ">
+               <font>
+                  <Font name="Corbel Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="444.0" layoutY="6.0" prefHeight="498.0" prefWidth="355.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="445.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ListView fx:id="listView1" layoutX="39.0" layoutY="284.0" prefHeight="191.0" prefWidth="277.0" />
+            <Label fx:id="lbColorRGB" layoutX="39.0" layoutY="23.0" prefHeight="243.0" prefWidth="277.0" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
