@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ViewColoresController">
+   <children>
+      <Slider fx:id="slider1" layoutX="45.0" layoutY="57.0" majorTickUnit="20.0" max="255.0" minorTickCount="20" prefHeight="37.0" prefWidth="371.0" showTickLabels="true" showTickMarks="true" value="127.0" AnchorPane.bottomAnchor="429.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="384.0" AnchorPane.topAnchor="60.0" />
+      <Slider fx:id="slider2" layoutX="48.0" layoutY="132.0" majorTickUnit="20.0" max="255.0" minorTickCount="20" prefHeight="37.0" prefWidth="371.0" showTickLabels="true" showTickMarks="true" value="127.0" AnchorPane.bottomAnchor="328.30078125" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="379.0" AnchorPane.topAnchor="160.0" />
+      <Slider fx:id="slider3" layoutX="48.0" layoutY="244.0" majorTickUnit="20.0" max="255.0" minorTickCount="20" prefHeight="37.0" prefWidth="371.0" showTickLabels="true" showTickMarks="true" value="127.0" AnchorPane.bottomAnchor="228.30078125" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="379.0" AnchorPane.topAnchor="260.0" />
+      <Label fx:id="txtRGB" layoutX="50.0" layoutY="342.0" prefHeight="45.0" prefWidth="110.0" text="Color (RGB): " AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="320.0">
+         <font>
+            <Font name="Corbel Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnGuardar" alignment="CENTER" layoutX="136.0" layoutY="410.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="200.0" text="Guardar" textAlignment="CENTER" AnchorPane.leftAnchor="136.0" AnchorPane.topAnchor="410.0">
+         <font>
+            <Font name="Corbel Bold" size="14.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="imageView1" fitHeight="243.0" fitWidth="277.0" layoutX="461.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="228.30078125" AnchorPane.leftAnchor="478.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="60.0" />
+      <ListView fx:id="listView1" layoutX="494.0" layoutY="320.0" prefHeight="191.0" prefWidth="277.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="320.0" />
+      <Label fx:id="txtR" layoutX="58.0" layoutY="14.0" prefHeight="35.0" prefWidth="110.0" text="R:" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="15.0">
+         <font>
+            <Font name="Corbel Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="txtG" layoutX="50.0" layoutY="113.0" prefHeight="35.0" prefWidth="110.0" text="G:" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="115.0">
+         <font>
+            <Font name="Corbel Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="txtB" layoutX="50.0" layoutY="210.0" prefHeight="35.0" prefWidth="110.0" text="B:" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="215.0">
+         <font>
+            <Font name="Corbel Bold" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
