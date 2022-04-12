@@ -7,3 +7,79 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Author     : Dani
 */
 
+
+#btnControl1 {
+    -fx-background-color: #ff6666;
+    -fx-background-radius: 10;
+    -fx-background-size: 10;
+    -fx-text-fill: white;
+}
+
+#btnControl1:hover {
+     -fx-background-color: #CCD5FF;
+     -fx-text-fill: white;
+     -fx-fill-width: 50;
+ }
+ 
+ #btnControl2 {
+    -fx-background-color: #99ff99;
+    -fx-background-size: 15;
+    -fx-text-fill: red;
+    -fx-font-style: italic;
+}
+
+#btnControl2:selected {
+    -fx-background-color: #ccccff;
+    -fx-background-size: 35;
+    -fx-text-fill: #99ff99;
+    -fx-rotate: 45;
+}
+
+#btnControl3 {
+    -fx-background-color: #ffcc66;
+    -fx-background-size: 10;
+    -fx-text-fill: green;
+    -fx-font-style: bold;
+    -fx-content-display: left;
+    -fx-alignment: TOP_LEFT;
+    -fx-label-padding: 0,0,0,0;
+}
+
+#btnControl3:selected {
+    -fx-background-color: #ffff00;
+    -fx-background-size: 10;
+    -fx-text-fill: black;
+    -fx-font-style: bold;
+    -fx-content-display: right;
+    -fx-alignment: TOP_RIGHT;
+    -fx-label-padding: 5,5,5,5;
+}
+
+#btnControl4 {
+    -fx-background-color: #998B7A;
+    -fx-text-fill: white;
+    -fx-font-style: italic;
+    -fx-content-display: right;
+    -fx-alignment: TOP_RIGHT;
+    -fx-rotate: -20;
+    -fx-scale-x: 2;
+}
+
+#btnControl5 {
+    -fx-background-color: #ccccff;
+    -fx-background-radius: 55;
+    -fx-background-size: 10;
+    -fx-text-fill: brown;
+    -fx-font-style: italic;
+    -fx-rotate: 0;
+}
+
+#btnControl5:selected {
+    -fx-background-color: #ccccff;
+    -fx-background-radius: 55;
+    -fx-background-size: 10;
+    -fx-text-fill: black;
+    -fx-font-style: bold;
+    -fx-rotate: 180;
+}
+

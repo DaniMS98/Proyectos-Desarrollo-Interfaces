@@ -15,7 +15,7 @@
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #A0ACE6;" styleClass="vBox1">
          <children>
-            <Button id="btnEstilo1" fx:id="btnEstilo1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClickEstilos" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #5C6699;" text="Hoja Estilos #1" textAlignment="CENTER" textFill="WHITE" VBox.vgrow="ALWAYS">
+            <Button fx:id="btnEstilo1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClickEstilos" prefHeight="50.0" prefWidth="200.0" stylesheets="@../estilos/hojaprincipal.css" text="Hoja Estilos #1" textAlignment="CENTER" textFill="WHITE" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets top="100.0" />
                </VBox.margin>
@@ -23,7 +23,7 @@
                   <Font name="DejaVu Sans Bold" size="14.0" />
                </font>
             </Button>
-            <Button id="btnEstilo2" fx:id="btnEstilo2" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClickEstilos" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #5C6699;" text="Hoja Estilos #2" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="btnEstilo2" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClickEstilos" prefHeight="50.0" prefWidth="200.0" stylesheets="@../estilos/hojaprincipal.css" text="Hoja Estilos #2" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="DejaVu Sans Bold" size="14.0" />
                </font>
@@ -31,7 +31,7 @@
                   <Insets top="100.0" />
                </VBox.margin>
             </Button>
-            <Button id="btnEstilo3" fx:id="btnEstilo3" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClickEstilos" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #5C6699;" text="Hoja Estilos #3" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="btnEstilo3" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClickEstilos" prefHeight="50.0" prefWidth="200.0" stylesheets="@../estilos/hojaprincipal.css" text="Hoja Estilos #3" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="DejaVu Sans Bold" size="14.0" />
                </font>
@@ -41,10 +41,10 @@
             </Button>
          </children>
       </VBox>
-      <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-background-color: grey;" />
+      <Separator fx:id="separator" orientation="VERTICAL" prefHeight="200.0" stylesheets="@../estilos/hojaprincipal.css" />
       <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #A0ACE6;" styleClass="vBox2" HBox.hgrow="ALWAYS">
          <children>
-            <Button id="controladorBoton" fx:id="btnControl1" alignment="CENTER" mnemonicParsing="false" onAction="#onClickSurprise" prefHeight="40.0" prefWidth="150.0" text="Boton" textAlignment="CENTER">
+            <Button fx:id="btnControl1" alignment="CENTER" mnemonicParsing="false" onAction="#onClickSurprise" prefHeight="40.0" prefWidth="150.0" text="Boton" textAlignment="CENTER">
                <font>
                   <Font name="DejaVu Sans Bold" size="13.0" />
                </font>
@@ -52,7 +52,7 @@
                   <Insets top="70.0" />
                </VBox.margin>
             </Button>
-            <CheckBox id="controladorCheckBox" fx:id="btnControl2" alignment="CENTER" mnemonicParsing="false" onAction="#onClickSurprise" prefHeight="30.0" prefWidth="100.0" text="CheckBox" textAlignment="CENTER">
+            <CheckBox fx:id="btnControl2" alignment="CENTER" mnemonicParsing="false" onAction="#onClickSurprise" prefHeight="30.0" prefWidth="100.0" text="CheckBox" textAlignment="CENTER">
                <font>
                   <Font name="DejaVu Sans Bold" size="13.0" />
                </font>
@@ -60,7 +60,7 @@
                   <Insets top="70.0" />
                </VBox.margin>
             </CheckBox>
-            <RadioButton id="controladorRadioButton" fx:id="btnControl3" mnemonicParsing="false" onAction="#onClickSurprise" prefHeight="30.0" prefWidth="120.0" text="RadioButton" textAlignment="CENTER">
+            <RadioButton fx:id="btnControl3" mnemonicParsing="false" onAction="#onClickSurprise" prefHeight="30.0" prefWidth="120.0" text="RadioButton" textAlignment="CENTER">
                <VBox.margin>
                   <Insets top="70.0" />
                </VBox.margin>
@@ -68,7 +68,7 @@
                   <Font name="DejaVu Sans Bold" size="13.0" />
                </font>
             </RadioButton>
-            <ComboBox id="controladorComboBox" fx:id="btnControl4" onAction="#onClickSurprise" prefWidth="150.0" promptText="ComboBox">
+            <ComboBox fx:id="btnControl4" onAction="#onClickSurprise" prefWidth="150.0" promptText="ComboBox">
                <VBox.margin>
                   <Insets top="70.0" />
                </VBox.margin>

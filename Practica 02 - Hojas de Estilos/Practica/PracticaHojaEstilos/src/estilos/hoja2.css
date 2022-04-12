@@ -7,3 +7,93 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Author     : Dani
 */
 
+#btnControl1 {
+    -fx-background-color: #339900;
+    -fx-background-radius: 10;
+    -fx-background-size: 10;
+    -fx-text-fill: white;
+    -fx-rotate: -90;
+}
+
+#btnControl1:hover {
+     -fx-background-color: #CCD5FF;
+     -fx-text-fill: black;
+     -fx-rotate: -180;
+ }
+ 
+ #btnControl1:pressed {
+     -fx-background-color: #009999;
+     -fx-text-fill: brown;
+     -fx-fill-width: 50;
+     -fx-rotate: 90;
+ }
+ 
+ #btnControl2 {
+     -fx-background-color: #9999ff;
+    -fx-background-size: 50;
+    -fx-text-fill: black;
+    -fx-font-style: bold;
+    -fx-content-display: right;
+    -fx-alignment: TOP_RIGHT;
+   
+}
+
+#btnControl2:selected {
+    -fx-background-color: #66ff66;
+    -fx-background-size: 35;
+    -fx-text-fill: #99ff99;
+    -fx-content-display: left;
+    -fx-alignment: TOP_LEFT;
+    -fx-rotate: 240;
+    -fx-font: sans-serif;
+}
+
+#btnControl3 {
+    -fx-background-color: #3300cc;
+    -fx-background-size: 10;
+    -fx-text-fill: orange;
+    -fx-font-style: bold;
+    -fx-content-display: left;
+    -fx-alignment: TOP_LEFT;
+    -fx-orientation: 180;
+    -fx-label-padding: 10,10,10,10;
+}
+
+#btnControl3:selected {
+    -fx-background-color: #ffff00;
+    -fx-background-size: 10;
+    -fx-text-fill: black;
+    -fx-font-style: bold;
+    -fx-content-display: right;
+    -fx-alignment: TOP_RIGHT;
+    -fx-label-padding: 5,5,5,5;
+}
+
+#btnControl4 {
+    -fx-background-color: #998B7A;
+    -fx-text-fill: white;
+    -fx-font-style: italic;
+    -fx-content-display: right;
+    -fx-alignment: TOP_RIGHT;
+    -fx-rotate: -20;
+    -fx-scale-x: 2;
+}
+
+#btnControl5 {
+    -fx-background-color: #ccccff;
+    -fx-background-radius: 55;
+    -fx-background-size: 10;
+    -fx-text-fill: brown;
+    -fx-font-style: italic;
+    -fx-rotate: 0;
+}
+
+#btnControl5:selected {
+    -fx-background-color: #ccccff;
+    -fx-background-radius: 55;
+    -fx-background-size: 10;
+    -fx-text-fill: black;
+    -fx-font-style: bold;
+    -fx-rotate: 180;
+}
+

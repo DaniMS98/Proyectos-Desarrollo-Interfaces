@@ -21,7 +21,8 @@ public class PracticaHojaEstilos extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/vista/ViewEstilos.fxml"));
         
         Scene scene = new Scene(root);
-        
+        String css = this.getClass().getResource("/estilos/hojaprincipal.css").toExternalForm();
+        scene.getStylesheets().add(css);
         stage.setScene(scene);
         stage.show();
     }
