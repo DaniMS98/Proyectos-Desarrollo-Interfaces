@@ -1,12 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="controlador.ViewEstilosController">
-    <children>
-        <Button fx:id="button" layoutX="126" layoutY="90" onAction="#handleButtonAction" text="Click Me!" />
-        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
-    </children>
-</AnchorPane>
+<HBox prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ViewEstilosController">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #A0ACE6;" styleClass="vBox1">
+         <children>
+            <Button id="btnEstilo1" fx:id="btnEstilo1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClickEstilos" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #5C6699;" text="Hoja Estilos #1" textAlignment="CENTER" textFill="WHITE" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets top="100.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="DejaVu Sans Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button id="btnEstilo2" fx:id="btnEstilo2" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClickEstilos" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #5C6699;" text="Hoja Estilos #2" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="DejaVu Sans Bold" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="100.0" />
+               </VBox.margin>
+            </Button>
+            <Button id="btnEstilo3" fx:id="btnEstilo3" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClickEstilos" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #5C6699;" text="Hoja Estilos #3" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="DejaVu Sans Bold" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="100.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+      <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-background-color: grey;" />
+      <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #A0ACE6;" styleClass="vBox2" HBox.hgrow="ALWAYS">
+         <children>
+            <Button id="controladorBoton" fx:id="btnControl1" alignment="CENTER" mnemonicParsing="false" onAction="#onClickSurprise" prefHeight="40.0" prefWidth="150.0" text="Boton" textAlignment="CENTER">
+               <font>
+                  <Font name="DejaVu Sans Bold" size="13.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="70.0" />
+               </VBox.margin>
+            </Button>
+            <CheckBox id="controladorCheckBox" fx:id="btnControl2" alignment="CENTER" mnemonicParsing="false" onAction="#onClickSurprise" prefHeight="30.0" prefWidth="100.0" text="CheckBox" textAlignment="CENTER">
+               <font>
+                  <Font name="DejaVu Sans Bold" size="13.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="70.0" />
+               </VBox.margin>
+            </CheckBox>
+            <RadioButton id="controladorRadioButton" fx:id="btnControl3" mnemonicParsing="false" onAction="#onClickSurprise" prefHeight="30.0" prefWidth="120.0" text="RadioButton" textAlignment="CENTER">
+               <VBox.margin>
+                  <Insets top="70.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="DejaVu Sans Bold" size="13.0" />
+               </font>
+            </RadioButton>
+            <ComboBox id="controladorComboBox" fx:id="btnControl4" onAction="#onClickSurprise" prefWidth="150.0" promptText="ComboBox">
+               <VBox.margin>
+                  <Insets top="70.0" />
+               </VBox.margin>
+            </ComboBox>
+            <ToggleButton fx:id="btnControl5" mnemonicParsing="false" onAction="#onClickSurprise" prefHeight="40.0" prefWidth="150.0" text="ToggleButton" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="70.0" />
+               </VBox.margin>
+            </ToggleButton>
+         </children>
+      </VBox>
+   </children>
+</HBox>
