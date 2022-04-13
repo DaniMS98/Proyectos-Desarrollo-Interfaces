@@ -8,6 +8,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -15,12 +16,24 @@ import javafx.stage.Stage;
  * @author Dani
  */
 public class PracticaHojaEstilos extends Application {
+
+    private Stage stage;
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/vista/ViewEstilos.fxml"));
+        //Añadiendo Titulo a la Aplicacion
+        this.stage = stage;
+        this.stage.setTitle("Hoja de Estilos");
         
+        //Añadiendo Icono
+        this.stage.getIcons().add(new Image("/images/css.png"));
+        
+        //Cargamos la vista que vamos a cargar en la aplicacion
+        
+        Parent root = FXMLLoader.load(getClass().getResource("/vista/ViewEstilos.fxml"));
         Scene scene = new Scene(root);
+        
+        //Indicamos la hoja de estilo CSS que vamos a añadir a nuestra aplicacion
         String css = this.getClass().getResource("/estilos/hojaprincipal.css").toExternalForm();
         scene.getStylesheets().add(css);
         stage.setScene(scene);

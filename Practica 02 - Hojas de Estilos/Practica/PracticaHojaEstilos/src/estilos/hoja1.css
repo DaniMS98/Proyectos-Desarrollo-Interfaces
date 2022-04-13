@@ -56,13 +56,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }
 
 #btnControl4 {
-    -fx-background-color: #998B7A;
+    -fx-background-color: #665D52;
     -fx-text-fill: white;
     -fx-font-style: italic;
     -fx-content-display: right;
     -fx-alignment: TOP_RIGHT;
     -fx-rotate: -20;
     -fx-scale-x: 2;
+    -fx-scale-y: 2;
+}
+
+#btnControl4:hover {
+    -fx-background-color: #998B7A;
+    -fx-text-fill: white;
+    -fx-content-display: left;
+    -fx-alignment: TOP_LEFT;
+    -fx-rotate: 20;
+    -fx-scale-x: 2;
+    -fx-scale-y: 2;
 }
 
 #btnControl5 {

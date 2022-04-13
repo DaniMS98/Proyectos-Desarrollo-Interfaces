@@ -7,10 +7,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Author     : Dani
 */
 
-#separator {
-    -fx-background-color: grey;
-}
-
  #btnEstilo1 {
      -fx-background-color: #5C6699;
      -fx-text-fill: white;

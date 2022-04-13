@@ -45,10 +45,14 @@ public class ViewEstilosController implements Initializable {
     @FXML
     private ToggleButton btnControl5;
     
+    //Cambiar entre Hojas de Estilos
+    
     @FXML
     private void onClickEstilos(ActionEvent event) throws IOException {
         
        Object evnt = event.getSource();
+       
+       //Si pulsamos el primer boton entonces cambia todo el estilo de los botones que hemos indicado
         
         if(evnt.equals(btnEstilo1)) {
             
@@ -59,7 +63,7 @@ public class ViewEstilosController implements Initializable {
             scene.setUserAgentStylesheet("/estilos/hoja1.css");           
             stage.setScene(scene);
             stage.show();
-        } else if(evnt.equals(btnEstilo2)) {
+        } else if(evnt.equals(btnEstilo2)) { //Lo mismo con el segundo boton
             
             Parent root = FXMLLoader.load(getClass().getResource("/vista/ViewEstilos.fxml"));
             Scene scene = new Scene(root);
@@ -68,7 +72,7 @@ public class ViewEstilosController implements Initializable {
             scene.setUserAgentStylesheet("/estilos/hoja2.css");           
             stage.setScene(scene);
             stage.show();
-        } else if(evnt.equals(btnEstilo3)) {
+        } else if(evnt.equals(btnEstilo3)) { //Lo mismo con el tercer boton
             
             Parent root = FXMLLoader.load(getClass().getResource("/vista/ViewEstilos.fxml"));
             Scene scene = new Scene(root);
@@ -78,11 +82,6 @@ public class ViewEstilosController implements Initializable {
             stage.setScene(scene);
             stage.show();
         }
-        
-    }
-    
-    @FXML
-    private void onClickSurprise(ActionEvent event) {
         
     }
     
