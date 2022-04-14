@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -25,6 +26,8 @@ public class PracticaTemporizador extends Application {
         this.stage = stage;
         this.stage.setTitle("Temporizador");
         this.stage.getIcons().add(new Image("/images/icono.png"));
+        
+        stage.initStyle(StageStyle.DECORATED);
         
         Parent root = FXMLLoader.load(getClass().getResource("/vista/ViewTemporizador.fxml"));
         
