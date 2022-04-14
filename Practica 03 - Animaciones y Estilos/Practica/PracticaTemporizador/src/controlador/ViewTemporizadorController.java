@@ -5,10 +5,7 @@
 package controlador;
 
 import java.net.URL;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.ResourceBundle;
-import java.util.TreeMap;
+import java.util.*;
 import javafx.animation.ParallelTransition;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
@@ -18,7 +15,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
@@ -30,64 +26,54 @@ import javax.swing.JOptionPane;
  * @author Dani
  */
 public class ViewTemporizadorController implements Initializable {
+    
+    //Creamos objetos y los referenciamos con el archivo FXML creado anteriormente
 
     @FXML
-    private AnchorPane timePanel;
+    private AnchorPane timePanel, menuPanel;
     
     @FXML
-    private Button btnConfigurar, btnParar, btnCancelar, btnReanudar;
-      
-    @FXML
-    private AnchorPane menuPanel;
+    private Button btnConfigurar, btnParar, btnCancelar, btnReanudar, btnIniciar, btnHora;
     
     @FXML
-    private Text txtHora;
+    private Text txtHora, txtMinutos, txtSegundos;
     
     @FXML
-    private Text txtMinutos;
-    
-    @FXML
-    private Text txtSegundos;
-    
-    @FXML
-    private ComboBox<Integer> inputHoras;
-    
-    @FXML
-    private ComboBox<Integer> inputMinutos;
-    
-    @FXML
-    private ComboBox<Integer> inputSegundos;
+    private ComboBox<Integer> inputHoras, inputMinutos, inputSegundos;
     
     @FXML   
     private TextField txtRecordatorio;
     
-    @FXML
-    private Button btnIniciar;
+    //Creamos variables necesarias para el 
+    //correcto funcionamiento de la aplicación
     
-    @FXML
-    private Button btnHora;
+    String mensaje, hora, minutos, segundos;
     
-    String mensaje;
+    Calendar calendario;
     
     Map<Integer, String> mapaNumber;
     
     Integer segundosActuales;
     
-    Thread trd;
+    Thread trd, trHoraActual;
     
+    //Metodo que le da valores iniciales a los objetos
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
         ObservableList<Integer> listaHoras = FXCollections.observableArrayList();
         ObservableList<Integer> listaMinutosYSegundos = FXCollections.observableArrayList();
         
-        for(int i=0; i<=60 ; i++) {
+        //Creamos un for donde iniciamos una variable i  
+        //que podra leer hasta el numero 59
+        for(Integer i=0; i<60 ; i++) {
             
-            if(i >= 0 && i<=24) {
-                listaHoras.add(new Integer(i));
+            //Las horas solo contaran hasta el numero 23
+            if(i >= 0 && i<24) {
+                listaHoras.add(i);
             }
-            
-            listaMinutosYSegundos.add(new Integer(i));   
+            //Los minutos y segundos podran contar hasta el numero 59
+            listaMinutosYSegundos.add(i);   
         }
         
         //Añadimos el rango de tiempo que pueden tener las Horas, Minutos y Segundos
@@ -102,21 +88,23 @@ public class ViewTemporizadorController implements Initializable {
         inputSegundos.setItems(listaMinutosYSegundos);
         inputSegundos.setValue(0);
         
+        //Iniciamos el mapa de Numeros que podra contar numeros hasta el 59
         mapaNumber = new TreeMap<>();
         
-        for(Integer i=0; i<=60; i++) {
+        for(Integer i=0; i<60; i++) {
             
             if(0 <= i && i <= 9) {
                 mapaNumber.put(i, "0" + i.toString());
             } else {
                 mapaNumber.put(i, i.toString());
             }
-            
+           
         }
     }
 
-    public Integer convertirASegundos(Integer h, Integer m, Integer s) {
-        
+    //Este metodo convierte las horas y minutos en segundos
+    //para luego sumarlo todo (horas + minutos + segundos)
+    public Integer convertirASegundos(Integer h, Integer m, Integer s) {     
         Integer horaASegundos = h*3600;
         Integer minutoASegundos = m*60;
         Integer total = horaASegundos + minutoASegundos + s;
@@ -124,7 +112,10 @@ public class ViewTemporizadorController implements Initializable {
         return total;
     }
     
-    public LinkedList<Integer> convertirSegundosAHoraMinutos(Integer segundosActual) {
+    //Este metodo convierte los segundos en Horas y Minutos
+    //para luego meter las horas, minutos y segundos en un List
+    //y hacer un return de la lista
+    public List<Integer> convertirSegundosAHoraMinutos(Integer segundosActual) {
         
         Integer horas = segundosActual / 3600;
         segundosActual = segundosActual % 3600;
@@ -134,7 +125,7 @@ public class ViewTemporizadorController implements Initializable {
         
         Integer segundos = segundosActual;
         
-        LinkedList<Integer> tiempo = new LinkedList<>();
+        List<Integer> tiempo = new LinkedList<>();
         tiempo.add(horas);
         tiempo.add(minutos);
         tiempo.add(segundos);
@@ -142,7 +133,7 @@ public class ViewTemporizadorController implements Initializable {
         return tiempo;       
     }
     
-    //Metodo que empieza la Cuenta Atras
+    //Metodo que empieza la Cuenta Atras del Temporizador
     public void empezarCuentaAtras() {
         
         trd = new Thread(new Runnable() {
@@ -150,17 +141,25 @@ public class ViewTemporizadorController implements Initializable {
             @Override
             public void run() {
                 try {
-                  
+                    
+                    //Mientras el Thread sea true entonces hara el siguiente codigo
                     while(true) {
                         
-                        LinkedList<Integer> hmsActuales = convertirSegundosAHoraMinutos(segundosActuales); 
+                        //Crea un objeto List tipo Integer donde su valor sera
+                        //la lista de tiempo creada en el metodo
+                        List<Integer> hmsActuales = convertirSegundosAHoraMinutos(segundosActuales); 
                         
+                        //En los Text de Hora, Minuto y Segundo ponemos los
+                        //valores correspondientes
                         txtHora.setText(mapaNumber.get(hmsActuales.get(0)));
                         txtMinutos.setText(mapaNumber.get(hmsActuales.get(1)));
                         txtSegundos.setText(mapaNumber.get(hmsActuales.get(2)));
                         
+                        //Provocamos un Thread cada segundo 
                         Thread.sleep(1000);
                         
+                        //Si los segundos llegan a 0 entonces salta un JOptionPane
+                        //con el mensaje que habiamos escrito anteriormente
                         if(segundosActuales==0) {
                             JOptionPane.showMessageDialog(null, "El periodo de la tarea: " + mensaje + " ha finalizado." 
                                     , "RECORDATORIO", JOptionPane.INFORMATION_MESSAGE);
@@ -177,7 +176,12 @@ public class ViewTemporizadorController implements Initializable {
     }
     
     public void cambiarPanelMenu() {
+        //1.º Metodo (Sencillo): Hacemos Visible un Panel y el otro lo ocultamos
+        menuPanel.setVisible(false);
+        timePanel.setVisible(true);
         
+        //2.º Metodo: Crear una Transicion donde movemos un Panel de un lado a otro
+        /*
         //Creamos la Transicion de la Primera Vista (Panel del Menu)
         //y le otorgamos la posicion donde queremos moverla
         TranslateTransition transl1 = new TranslateTransition();
@@ -202,11 +206,17 @@ public class ViewTemporizadorController implements Initializable {
         //de una vista a otra
         
         ParallelTransition parallel = new ParallelTransition(transl1, transl2);
-        parallel.play();     
+        parallel.play();  
+        */
     }
     
     public void cambiarPanelTiempo() {
+        //1.º Metodo (Sencillo): Hacemos Visible un Panel y el otro lo ocultamos
+        menuPanel.setVisible(true);
+        timePanel.setVisible(false);
         
+        //2.º Metodo: Crear una Transicion donde movemos un Panel de un lado a otro
+        /*
         //Creamos la Transicion de la Primera Vista (Panel del Menu
         //y le otorgamos la posicion donde queremos moverla
         TranslateTransition transl1 = new TranslateTransition();
@@ -232,32 +242,29 @@ public class ViewTemporizadorController implements Initializable {
         
         ParallelTransition parallel = new ParallelTransition(transl1, transl2);
         parallel.play();
+        */
     }
 
     //Este evento se inicia al pulsar uno de los siguientes botones
-    //
+    // (Configurar, Stop, Cancelar, Reanudar)
     @FXML
-    private void onClickButton(ActionEvent event) {       
-        cambiarPanelTiempo();
-        trd.stop();
-    }
-
-    @FXML
-    private void onClickStop(ActionEvent event) {
-        trd.stop();
-    }
-
-    @FXML
-    private void onClickCancelar(ActionEvent event) {
-        trd.stop();
-        cambiarPanelTiempo();
-    }
-
-    @FXML
-    private void onClickReanudar(ActionEvent event) {
+    private void onClickButton(ActionEvent event) {   
+        Object evt = event.getSource();
         
+        if(evt.equals(btnConfigurar) || evt.equals(btnCancelar)) { 
+            cambiarPanelTiempo();
+            trd.stop();
+            trHoraActual.stop();
+            
+            btnReanudar.setVisible(true);
+            btnParar.setVisible(true);
+        } else if(evt.equals(btnParar)) {       
+            trd.suspend();
+        } else if(evt.equals(btnReanudar)) {       
+            trd.resume();
+        } 
     }
-
+    
     //Iniciar la cuenta atras del Temporizador
     @FXML
     private void onClickIniciar(ActionEvent event) {
@@ -279,8 +286,54 @@ public class ViewTemporizadorController implements Initializable {
         empezarCuentaAtras();
     }
 
+    //Muestra la Hora Actual
     @FXML
     private void onClickHoraActual(ActionEvent event) {
+        //Cambia el Panel y oculta los Botones Reanudar y Parar
+        //ya que no tienen ninguna funcion relevante al mostrarse la hora actual
+        cambiarPanelMenu();
+        btnReanudar.setVisible(false);
+        btnParar.setVisible(false);
+        
+        trHoraActual = new Thread(new Runnable() {
+            @Override
+            public void run() {
+          
+                //Mientras el Thread sea true entonces hara el siguiente codigo
+                while(true) {
+                    //Accede al siguiente metodo
+                    calcularHoraActual();
+                    
+                    //Inserta en los Componentes la hora, minutos y segundos actuales
+                    txtHora.setText(hora);
+                    txtMinutos.setText(minutos);
+                    txtSegundos.setText(segundos);
+                    
+                    //Se produce un Thread de 1 segundo
+                    try {
+                        Thread.sleep(1000);
+                    } catch(Exception e) {
+                        e.printStackTrace();
+                    }
+                }   
+            } 
+        });
+        trHoraActual.start();      
     }
     
+    //Metodo que permite calcular la Hora Actual del Usuario
+     private void calcularHoraActual() {
+         //Inicializamos el objeto de tipo Calendar como un GregorianCalendar
+         calendario = new GregorianCalendar();
+         //Creamos un objeto Date
+         Date fechaHoraActual = new Date();
+         
+         //Insertamos la hora actual en el calendario
+         calendario.setTime(fechaHoraActual);
+         
+         //Guardamos los datos necesarios en los valores String creados al principio
+         hora = calendario.get(Calendar.HOUR_OF_DAY) > 9 ? "" + calendario.get(Calendar.HOUR_OF_DAY) : "0" + calendario.get(Calendar.HOUR_OF_DAY);  
+         minutos = calendario.get(Calendar.MINUTE) > 9 ? "" + calendario.get(Calendar.MINUTE) : "0" + calendario.get(Calendar.MINUTE);
+         segundos = calendario.get(Calendar.SECOND) > 9 ? "" + calendario.get(Calendar.SECOND) : "0" + calendario.get(Calendar.SECOND);   
+     }            
 }
