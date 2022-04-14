@@ -15,7 +15,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
@@ -56,7 +58,7 @@ public class ViewTemporizadorController implements Initializable {
     Integer segundosActuales;
     
     Thread trd, trHoraActual;
-    
+     
     //Metodo que le da valores iniciales a los objetos
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -115,7 +117,7 @@ public class ViewTemporizadorController implements Initializable {
     //Este metodo convierte los segundos en Horas y Minutos
     //para luego meter las horas, minutos y segundos en un List
     //y hacer un return de la lista
-    public List<Integer> convertirSegundosAHoraMinutos(Integer segundosActual) {
+    public LinkedList<Integer> convertirSegundosAHoraMinutos(Integer segundosActual) {
         
         Integer horas = segundosActual / 3600;
         segundosActual = segundosActual % 3600;
@@ -125,7 +127,7 @@ public class ViewTemporizadorController implements Initializable {
         
         Integer segundos = segundosActual;
         
-        List<Integer> tiempo = new LinkedList<>();
+        LinkedList<Integer> tiempo = new LinkedList<>();
         tiempo.add(horas);
         tiempo.add(minutos);
         tiempo.add(segundos);
@@ -147,7 +149,7 @@ public class ViewTemporizadorController implements Initializable {
                         
                         //Crea un objeto List tipo Integer donde su valor sera
                         //la lista de tiempo creada en el metodo
-                        List<Integer> hmsActuales = convertirSegundosAHoraMinutos(segundosActuales); 
+                        LinkedList<Integer> hmsActuales = convertirSegundosAHoraMinutos(segundosActuales); 
                         
                         //En los Text de Hora, Minuto y Segundo ponemos los
                         //valores correspondientes
@@ -253,11 +255,8 @@ public class ViewTemporizadorController implements Initializable {
         
         if(evt.equals(btnConfigurar) || evt.equals(btnCancelar)) { 
             cambiarPanelTiempo();
-            trd.stop();
-            trHoraActual.stop();
-            
-            btnReanudar.setVisible(true);
-            btnParar.setVisible(true);
+            trd.destroy();
+            trHoraActual.destroy();           
         } else if(evt.equals(btnParar)) {       
             trd.suspend();
         } else if(evt.equals(btnReanudar)) {       
@@ -268,6 +267,10 @@ public class ViewTemporizadorController implements Initializable {
     //Iniciar la cuenta atras del Temporizador
     @FXML
     private void onClickIniciar(ActionEvent event) {
+        btnReanudar.setVisible(true);
+        btnParar.setVisible(true);
+        trHoraActual.stop();
+        
         //Recoge todos los valores almacenados en los ComboBox de Horas, Minutos y Segundos
         //y los mete en la variable segundosActuales
         segundosActuales = convertirASegundos(inputHoras.getValue(), inputMinutos.getValue(), inputSegundos.getValue());
@@ -291,9 +294,9 @@ public class ViewTemporizadorController implements Initializable {
     private void onClickHoraActual(ActionEvent event) {
         //Cambia el Panel y oculta los Botones Reanudar y Parar
         //ya que no tienen ninguna funcion relevante al mostrarse la hora actual
-        cambiarPanelMenu();
         btnReanudar.setVisible(false);
         btnParar.setVisible(false);
+        cambiarPanelMenu();
         
         trHoraActual = new Thread(new Runnable() {
             @Override

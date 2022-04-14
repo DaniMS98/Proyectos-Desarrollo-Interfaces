@@ -30,8 +30,10 @@ public class PracticaTemporizador extends Application {
         stage.initStyle(StageStyle.DECORATED);
         
         Parent root = FXMLLoader.load(getClass().getResource("/vista/ViewTemporizador.fxml"));
-        
         Scene scene = new Scene(root);
+        
+        String css = this.getClass().getResource("/estilos/hoja.css").toExternalForm();
+        scene.getStylesheets().add(css);
         
         stage.setScene(scene);
         stage.show();

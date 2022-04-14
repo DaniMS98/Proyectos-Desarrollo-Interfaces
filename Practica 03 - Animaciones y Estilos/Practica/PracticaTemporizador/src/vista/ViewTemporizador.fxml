@@ -26,9 +26,9 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <AnchorPane prefHeight="403.0" prefWidth="313.0" style="-fx-background-color: #424699;">
+            <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #424699;">
                <children>
-                  <ImageView fitHeight="145.0" fitWidth="228.0" layoutX="21.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="135.2933349609375" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="135.0">
+                  <ImageView fitHeight="145.0" fitWidth="225.0" layoutX="21.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="135.2933349609375" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="135.0">
                      <image>
                         <Image url="@../images/temporizador1.png" />
                      </image>
@@ -125,7 +125,7 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Button fx:id="btnConfigurar" alignment="CENTER" mnemonicParsing="false" onAction="#onClickButton" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #424699;" text="Configurar" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" GridPane.halignment="CENTER">
+                                    <Button fx:id="btnConfigurar" alignment="CENTER" mnemonicParsing="false" onAction="#onClickButton" prefHeight="40.0" prefWidth="150.0" stylesheets="@../estilos/hoja.css" text="Configurar" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" GridPane.halignment="CENTER">
                                        <font>
                                           <Font name="Monospaced Bold" size="20.0" />
                                        </font>
@@ -133,7 +133,7 @@
                                           <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
                                        </GridPane.margin>
                                     </Button>
-                                    <Button fx:id="btnParar" alignment="CENTER" mnemonicParsing="false" onAction="#onClickButton" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #424699;" text="Parar" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                    <Button fx:id="btnParar" alignment="CENTER" mnemonicParsing="false" onAction="#onClickButton" prefHeight="40.0" prefWidth="150.0" stylesheets="@../estilos/hoja.css" text="Parar" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                                        <font>
                                           <Font name="Monospaced Bold" size="20.0" />
                                        </font>
@@ -141,7 +141,7 @@
                                           <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
                                        </GridPane.margin>
                                     </Button>
-                                    <Button fx:id="btnCancelar" alignment="CENTER" mnemonicParsing="false" onAction="#onClickButton" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #424699;" text="Cancelar" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                    <Button fx:id="btnCancelar" alignment="CENTER" mnemonicParsing="false" onAction="#onClickButton" prefHeight="40.0" prefWidth="150.0" stylesheets="@../estilos/hoja.css" text="Cancelar" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                                        <font>
                                           <Font name="Monospaced Bold" size="20.0" />
                                        </font>
@@ -149,7 +149,7 @@
                                           <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
                                        </GridPane.margin>
                                     </Button>
-                                    <Button fx:id="btnReanudar" alignment="CENTER" mnemonicParsing="false" onAction="#onClickButton" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #424699;" text="Reanudar" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                    <Button fx:id="btnReanudar" alignment="CENTER" mnemonicParsing="false" onAction="#onClickButton" prefHeight="40.0" prefWidth="150.0" stylesheets="@../estilos/hoja.css" text="Reanudar" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                                        <font>
                                           <Font name="Monospaced Bold" size="20.0" />
                                        </font>
@@ -216,7 +216,7 @@
                                           <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
                                        </GridPane.margin>
                                     </ComboBox>
-                                    <ComboBox fx:id="inputSegundos" prefHeight="37.0" prefWidth="191.0" style="-fx-background-color: #A1A5FF;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                                    <ComboBox fx:id="inputSegundos" prefHeight="37.0" prefWidth="191.0" style="-fx-background-color: #A1A5FF;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                        <GridPane.margin>
                                           <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
                                        </GridPane.margin>
@@ -231,7 +231,7 @@
                                     </TextField>
                                  </children>
                               </GridPane>
-                              <Button fx:id="btnIniciar" alignment="CENTER" mnemonicParsing="false" onAction="#onClickIniciar" prefHeight="40.0" prefWidth="190.0" style="-fx-background-color: #424699;" text="Iniciar" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+                              <Button fx:id="btnIniciar" alignment="CENTER" mnemonicParsing="false" onAction="#onClickIniciar" prefHeight="40.0" prefWidth="190.0" stylesheets="@../estilos/hoja.css" text="Iniciar" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" GridPane.halignment="LEFT" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="Monospaced Bold" size="20.0" />
                                  </font>
@@ -239,7 +239,7 @@
                                     <Insets left="20.0" />
                                  </GridPane.margin>
                               </Button>
-                              <Button fx:id="btnHora" alignment="CENTER" mnemonicParsing="false" onAction="#onClickHoraActual" prefHeight="40.0" prefWidth="190.0" style="-fx-background-color: #424699;" text="Hora Actual" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                              <Button fx:id="btnHora" alignment="CENTER" mnemonicParsing="false" onAction="#onClickHoraActual" prefHeight="40.0" prefWidth="190.0" stylesheets="@../estilos/hoja.css" text="Hora Actual" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="Monospaced Bold" size="20.0" />
                                  </font>
