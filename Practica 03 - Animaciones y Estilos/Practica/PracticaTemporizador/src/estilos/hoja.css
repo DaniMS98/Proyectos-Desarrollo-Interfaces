@@ -67,21 +67,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
      -fx-text-fill: white;
  }
  
- #btnCancelar {
-     -fx-background-color: #424699;
-     -fx-text-fill: white;
- }
- 
- #btnCancelar:hover {
-     -fx-background-color: #CCD5FF;
-     -fx-text-fill: white;
- }
- 
- #btnCancelar:pressed {
-     -fx-background-color: #474D66;
-     -fx-text-fill: white;
- }
- 
  #btnReanudar {
      -fx-background-color: #424699;
      -fx-text-fill: white;

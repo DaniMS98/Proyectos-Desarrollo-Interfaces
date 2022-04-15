@@ -35,7 +35,7 @@ public class ViewTemporizadorController implements Initializable {
     private AnchorPane timePanel, menuPanel;
     
     @FXML
-    private Button btnConfigurar, btnParar, btnCancelar, btnReanudar, btnIniciar, btnHora;
+    private Button btnParar, btnConfigurar, btnReanudar, btnIniciar, btnHora;
     
     @FXML
     private Text txtHora, txtMinutos, txtSegundos;
@@ -45,6 +45,9 @@ public class ViewTemporizadorController implements Initializable {
     
     @FXML   
     private TextField txtRecordatorio;
+    
+    @FXML
+    private Label txtTarea;
     
     //Creamos variables necesarias para el 
     //correcto funcionamiento de la aplicación
@@ -58,6 +61,7 @@ public class ViewTemporizadorController implements Initializable {
     Integer segundosActuales;
     
     Thread trd, trHoraActual;
+    
      
     //Metodo que le da valores iniciales a los objetos
     @Override
@@ -136,7 +140,7 @@ public class ViewTemporizadorController implements Initializable {
     }
     
     //Metodo que empieza la Cuenta Atras del Temporizador
-    public void empezarCuentaAtras() {
+    public void empezarCuentaAtras() {    
         
         trd = new Thread(new Runnable() {
             
@@ -175,9 +179,10 @@ public class ViewTemporizadorController implements Initializable {
             }  
         }); 
         trd.start();
+        trHoraActual.stop();
     }
     
-    public void cambiarPanelMenu() {
+    public void cambiarAPanelMenu() {
         //1.º Metodo (Sencillo): Hacemos Visible un Panel y el otro lo ocultamos
         menuPanel.setVisible(false);
         timePanel.setVisible(true);
@@ -212,7 +217,7 @@ public class ViewTemporizadorController implements Initializable {
         */
     }
     
-    public void cambiarPanelTiempo() {
+    public void cambiarAPanelTiempo() {
         //1.º Metodo (Sencillo): Hacemos Visible un Panel y el otro lo ocultamos
         menuPanel.setVisible(true);
         timePanel.setVisible(false);
@@ -253,8 +258,9 @@ public class ViewTemporizadorController implements Initializable {
     private void onClickButton(ActionEvent event) {   
         Object evt = event.getSource();
         
-        if(evt.equals(btnConfigurar) || evt.equals(btnCancelar)) { 
-            cambiarPanelTiempo();
+        if(evt.equals(btnConfigurar)) {
+            txtTarea.setText("");
+            cambiarAPanelTiempo();
             trd.destroy();
             trHoraActual.destroy();           
         } else if(evt.equals(btnParar)) {       
@@ -269,7 +275,9 @@ public class ViewTemporizadorController implements Initializable {
     private void onClickIniciar(ActionEvent event) {
         btnReanudar.setVisible(true);
         btnParar.setVisible(true);
-        trHoraActual.stop();
+        btnConfigurar.setText("Configurar");
+        cambiarAPanelMenu();
+        
         
         //Recoge todos los valores almacenados en los ComboBox de Horas, Minutos y Segundos
         //y los mete en la variable segundosActuales
@@ -283,9 +291,10 @@ public class ViewTemporizadorController implements Initializable {
         inputMinutos.setValue(0);
         inputSegundos.setValue(0);
         txtRecordatorio.setText("");
+        txtTarea.setText("Tarea: " + mensaje);
         
         //Se mueve al panel del Temporizador y empieza la Cuenta Atras
-        cambiarPanelMenu();
+        
         empezarCuentaAtras();
     }
 
@@ -296,7 +305,9 @@ public class ViewTemporizadorController implements Initializable {
         //ya que no tienen ninguna funcion relevante al mostrarse la hora actual
         btnReanudar.setVisible(false);
         btnParar.setVisible(false);
-        cambiarPanelMenu();
+        btnConfigurar.setText("Volver");
+        txtTarea.setText("Hora Actual (España)");
+        cambiarAPanelMenu();
         
         trHoraActual = new Thread(new Runnable() {
             @Override
