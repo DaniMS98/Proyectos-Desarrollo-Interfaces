@@ -141,7 +141,7 @@ public class ViewTemporizadorController implements Initializable {
     
     //Metodo que empieza la Cuenta Atras del Temporizador
     public void empezarCuentaAtras() {    
-        
+  
         trd = new Thread(new Runnable() {
             
             @Override
@@ -177,9 +177,9 @@ public class ViewTemporizadorController implements Initializable {
                     e.printStackTrace();
                 }
             }  
-        }); 
-        trd.start();
-        trHoraActual.stop();
+        });
+        
+            trd.start();     
     }
     
     public void cambiarAPanelMenu() {
@@ -261,8 +261,10 @@ public class ViewTemporizadorController implements Initializable {
         if(evt.equals(btnConfigurar)) {
             txtTarea.setText("");
             cambiarAPanelTiempo();
-            trd.destroy();
-            trHoraActual.destroy();           
+
+            if(trHoraActual.isAlive()) {
+                trHoraActual.stop();
+            }
         } else if(evt.equals(btnParar)) {       
             trd.suspend();
         } else if(evt.equals(btnReanudar)) {       
@@ -277,7 +279,6 @@ public class ViewTemporizadorController implements Initializable {
         btnParar.setVisible(true);
         btnConfigurar.setText("Configurar");
         cambiarAPanelMenu();
-        
         
         //Recoge todos los valores almacenados en los ComboBox de Horas, Minutos y Segundos
         //y los mete en la variable segundosActuales
@@ -294,7 +295,6 @@ public class ViewTemporizadorController implements Initializable {
         txtTarea.setText("Tarea: " + mensaje);
         
         //Se mueve al panel del Temporizador y empieza la Cuenta Atras
-        
         empezarCuentaAtras();
     }
 
@@ -309,6 +309,18 @@ public class ViewTemporizadorController implements Initializable {
         txtTarea.setText("Hora Actual (España)");
         cambiarAPanelMenu();
         
+        //Reinicia los valores del ComboBox y TextField
+        inputHoras.setValue(0);
+        inputMinutos.setValue(0);
+        inputSegundos.setValue(0);
+        txtRecordatorio.setText("");
+        
+        empezarHoraActual();
+    }
+    
+    //Metodo que muestra la Hora Actual
+    private void empezarHoraActual() {
+
         trHoraActual = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -329,12 +341,12 @@ public class ViewTemporizadorController implements Initializable {
                     } catch(Exception e) {
                         e.printStackTrace();
                     }
-                }   
+                }
             } 
-        });
-        trHoraActual.start();      
+        });       
+        trHoraActual.start();
     }
-    
+        
     //Metodo que permite calcular la Hora Actual del Usuario
      private void calcularHoraActual() {
          //Inicializamos el objeto de tipo Calendar como un GregorianCalendar
