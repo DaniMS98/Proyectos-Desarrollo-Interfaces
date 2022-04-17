@@ -1,12 +1,17 @@
 package es.ideas;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
@@ -17,6 +22,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 public class PrimaryController implements Initializable {
 
@@ -63,10 +69,15 @@ public class PrimaryController implements Initializable {
     
     ObservableList<Alumno> listaAlumnos = FXCollections.observableArrayList();
     ObservableList<Alumno> alumnoSelected;
+    ObservableList<Alumno> listPassAlumn;
+    
+    
+    private ResourceBundle bundle;
+    private Locale locale;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+           
         //Inicialización del ComboBox con los días de la semana
         //También tiene que traducirse
         String dias_semana[] = {"Lunes", "Martes", "Miércoles", "Jueves",
@@ -86,7 +97,34 @@ public class PrimaryController implements Initializable {
     }
 
     @FXML
-    private void onClickButton(ActionEvent event) {
+    private void onClickButton(ActionEvent event) throws IOException {
+        
+        Object evt = event.getSource();
+        
+        if(evt.equals(btnIdiomaEEUU)) {
+            
+            Locale l = new Locale("EN");
+            LoadView(l);
+         
+        } else if(evt.equals(btnIdiomaEspaña)) {
+            Locale l = new Locale("ES");
+            LoadView(l);
+        }
+    }
+    
+    public void LoadView(Locale locale) {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("primary.fxml"));
+        loader.setResources(ResourceBundle.getBundle("es.ideas.bundle", locale));
+        
+        try {
+            Parent root = loader.load();
+            Stage stage = (Stage) btnIdiomaEspaña.getScene().getWindow();
+            stage.setScene(new Scene(root, 1000, 700));
+            stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @FXML

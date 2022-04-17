@@ -122,7 +122,7 @@
                   </GridPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Label fx:id="txtInfoAlumno" prefHeight="103.0" prefWidth="412.0" text="Informacion del Alumno:" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <Label fx:id="txtInfoAlumno" prefHeight="103.0" prefWidth="412.0" text="%txtInfoAlumno" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <font>
                               <Font name="Cambria Bold" size="16.0" />
                            </font>
