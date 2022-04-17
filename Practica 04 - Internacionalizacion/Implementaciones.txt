@@ -1,0 +1,7 @@
+Mejoras que voy a implementar en la aplicacion:
+- El label mostrara la información del alumno en el idioma en el que hayas pulsado.
+- La tabla nombre y apellidos almacenara los alumnos registrados.
+- El grafico almacenara la nota de los alumnos.
+- Creare varios TextField (nombre, apellido y nota).
+- Los botones cumpliran las siguientes funciones: Uno añadira alumnos y el otro mostrara el dia de la semana seleccionado por el ChoiceBox.
+- Los botones de los idiomas cambiaran de idioma la aplicación.
