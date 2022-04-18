@@ -70,18 +70,21 @@ public class PrimaryController implements Initializable {
     ObservableList<Alumno> listaAlumnos = FXCollections.observableArrayList();
     ObservableList<Alumno> alumnoSelected;
     ObservableList<Alumno> listPassAlumn;
-    
-    
+  
     private ResourceBundle bundle;
     private Locale locale;
     
+    private String dias_semana[] = {"Lunes", "Martes", "Miércoles", "Jueves",
+            "Viernes", "Sábado", "Domingo"};
+    
+    private String dias_semana_EN[] = {"Monday", "Martes", "Miércoles", "Jueves",
+            "Viernes", "Sábado", "Domingo"};
     @Override
     public void initialize(URL url, ResourceBundle rb) {
            
         //Inicialización del ComboBox con los días de la semana
         //También tiene que traducirse
-        String dias_semana[] = {"Lunes", "Martes", "Miércoles", "Jueves",
-            "Viernes", "Sábado", "Domingo"};
+        
         cbSemana.setItems(FXCollections.observableArrayList(dias_semana));
         cbSemana.setValue("Lunes");
         
@@ -101,13 +104,20 @@ public class PrimaryController implements Initializable {
         
         Object evt = event.getSource();
         
-        if(evt.equals(btnIdiomaEEUU)) {
-            
-            Locale l = new Locale("EN");
-            LoadView(l);
-         
+        if(evt.equals(btnIdiomaEEUU)) {    
+            Locale l = new Locale("US");
+            LoadView(l);          
         } else if(evt.equals(btnIdiomaEspaña)) {
             Locale l = new Locale("ES");
+            LoadView(l);
+        } else if(evt.equals(btnIdiomaReinoUnido)) {
+            Locale l = new Locale("EN");
+            LoadView(l);
+        } else if(evt.equals(btnIdiomaFrancia)) {
+            Locale l = new Locale("FR");
+            LoadView(l);
+        } else if(evt.equals(btnIdiomaItalia)) {
+            Locale l = new Locale("IT");
             LoadView(l);
         }
     }

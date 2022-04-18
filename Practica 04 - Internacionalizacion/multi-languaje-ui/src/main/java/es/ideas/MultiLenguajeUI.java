@@ -20,7 +20,7 @@ public class MultiLenguajeUI extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("primary.fxml"));
-        loader.setResources(ResourceBundle.getBundle("es.ideas.bundle1"));
+        loader.setResources(ResourceBundle.getBundle("es.ideas.bundle"));
         
         Parent root = loader.load();
         

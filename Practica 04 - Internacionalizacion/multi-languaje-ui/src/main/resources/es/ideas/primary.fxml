@@ -39,21 +39,21 @@
                      <children>
                         <TableView fx:id="tableAlumnos" prefHeight="200.0" prefWidth="235.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columns>
-                            <TableColumn fx:id="tableNombre" prefWidth="75.0" text="Nombre" />
-                            <TableColumn fx:id="tableApellidos" prefWidth="75.0" text="Apellidos" />
-                              <TableColumn fx:id="tableNotas" prefWidth="75.0" text="Notas" />
+                            <TableColumn fx:id="tableNombre" prefWidth="75.0" text="%tableNombre" />
+                            <TableColumn fx:id="tableApellidos" prefWidth="75.0" text="%tableApellidos" />
+                              <TableColumn fx:id="tableNotas" prefWidth="75.0" text="%tableNotas" />
                           </columns>
                         </TableView>
                      </children>
                   </AnchorPane>
                   <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
-                        <AreaChart fx:id="areaDiseñoInterfaces" layoutX="-188.0" layoutY="-150.0" prefHeight="250.0" prefWidth="312.0" title="Notas Diseño Interfaces" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AreaChart fx:id="areaDiseñoInterfaces" layoutX="-188.0" layoutY="-150.0" prefHeight="250.0" prefWidth="312.0" title="%notasDiseñoInterfaces" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <xAxis>
-                            <CategoryAxis fx:id="areaNotas" label="Notas" side="BOTTOM" />
+                            <CategoryAxis fx:id="areaNotas" label="%notaGrafica" side="BOTTOM" />
                           </xAxis>
                           <yAxis>
-                            <NumberAxis fx:id="areaMedias" label="Medias" side="LEFT" />
+                            <NumberAxis fx:id="areaMedias" label="%medias" side="LEFT" />
                           </yAxis>
                         </AreaChart>
                      </children>
@@ -68,7 +68,7 @@
                     </rowConstraints>
                      <children>
                         <ChoiceBox fx:id="cbSemana" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                        <Label fx:id="txtDiaSemana" text="Dia de la Semana:" GridPane.halignment="CENTER">
+                        <Label fx:id="txtDiaSemana" text="%diaSemana" GridPane.halignment="CENTER">
                            <font>
                               <Font name="Cambria Bold" size="16.0" />
                            </font>
@@ -86,17 +86,17 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label fx:id="txtNombre" text="Nombre:" GridPane.halignment="CENTER">
+                        <Label fx:id="txtNombre" text="%nombre" GridPane.halignment="CENTER">
                            <font>
                               <Font name="Cambria Bold" size="16.0" />
                            </font>
                         </Label>
-                        <Label fx:id="txtNota" text="Nota:" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                        <Label fx:id="txtNota" text="%nota" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                            <font>
                               <Font name="Cambria Bold" size="16.0" />
                            </font>
                         </Label>
-                        <Label fx:id="txtApellidos" text="Apellidos:" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                        <Label fx:id="txtApellidos" text="%apellidos" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                            <font>
                               <Font name="Cambria Bold" size="16.0" />
                            </font>
@@ -139,12 +139,12 @@
          <buttons>
             <AnchorPane prefHeight="52.0" prefWidth="715.0">
                <children>
-                  <Button fx:id="btnMostrar" layoutX="483.0" layoutY="11.0" mnemonicParsing="false" onAction="#onClickMostrar" text="Mostrar">
+                  <Button fx:id="btnMostrar" layoutX="478.0" layoutY="11.0" mnemonicParsing="false" onAction="#onClickMostrar" text="%btnMostrar">
                      <font>
                         <Font name="Cambria Bold" size="17.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnAñadir" layoutX="582.0" layoutY="11.0" mnemonicParsing="false" onAction="#onClickAdd" text="Añadir">
+                  <Button fx:id="btnAñadir" layoutX="582.0" layoutY="11.0" mnemonicParsing="false" onAction="#onClickAdd" text="%btnAñadir">
                      <font>
                         <Font name="Cambria Bold" size="17.0" />
                      </font>
