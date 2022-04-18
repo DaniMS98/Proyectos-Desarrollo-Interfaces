@@ -8,23 +8,26 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ResourceBundle;
+import javafx.scene.image.Image;
+import javafx.stage.StageStyle;
 
 /**
  * JavaFX App
  */
 public class MultiLenguajeUI extends Application {
-
-    private static Scene scene;
-
+    
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("primary.fxml"));
-        loader.setResources(ResourceBundle.getBundle("es.ideas.bundle"));
+        loader.setResources(ResourceBundle.getBundle("es.ideas.idiomas.bundle"));
         
         Parent root = loader.load();
+      
+        stage.setTitle("Multi-Lenguaje");
+        stage.initStyle(StageStyle.DECORATED);
         
-        scene = new Scene(root, 1000, 700);
+        Scene scene = new Scene(root, 1000, 700);
         stage.setScene(scene);
         stage.show();
     }

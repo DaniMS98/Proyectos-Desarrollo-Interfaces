@@ -60,15 +60,15 @@
                   </AnchorPane>
                   <GridPane prefHeight="162.0" prefWidth="432.0" GridPane.rowIndex="1">
                     <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="211.0" minWidth="10.0" prefWidth="166.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="291.0" minWidth="10.0" prefWidth="245.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="211.0" minWidth="10.0" prefWidth="184.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="291.0" minWidth="10.0" prefWidth="227.0" />
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <ChoiceBox fx:id="cbSemana" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                        <Label fx:id="txtDiaSemana" text="%diaSemana" GridPane.halignment="CENTER">
+                        <ChoiceBox fx:id="cbSemana" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" />                       
+                        <Label fx:id="txtDiaSemana" prefHeight="19.0" prefWidth="176.0" text="%diaSemana" textOverrun="WORD_ELLIPSIS" GridPane.halignment="CENTER">
                            <font>
                               <Font name="Cambria Bold" size="16.0" />
                            </font>
@@ -139,12 +139,12 @@
          <buttons>
             <AnchorPane prefHeight="52.0" prefWidth="715.0">
                <children>
-                  <Button fx:id="btnMostrar" layoutX="478.0" layoutY="11.0" mnemonicParsing="false" onAction="#onClickMostrar" text="%btnMostrar">
+                  <Button fx:id="btnMostrar" layoutX="397.0" layoutY="10.0" mnemonicParsing="false" onAction="#onClickMostrar" text="%btnMostrar">
                      <font>
                         <Font name="Cambria Bold" size="17.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnAñadir" layoutX="582.0" layoutY="11.0" mnemonicParsing="false" onAction="#onClickAdd" text="%btnAñadir">
+                  <Button fx:id="btnAñadir" layoutX="539.0" layoutY="10.0" mnemonicParsing="false" onAction="#onClickAdd" text="%btnAñadir">
                      <font>
                         <Font name="Cambria Bold" size="17.0" />
                      </font>
