@@ -80,27 +80,25 @@ public class PrimaryController implements Initializable {
     
     private Integer notas[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     
-    private String dias_semana[] = {"Lunes", "Martes", "Miércoles", "Jueves",
-            "Viernes", "Sábado", "Domingo"};
-    
-    private String dias_semana_US_EN[] = {"Monday", "Tuesday", "Wednesday", "Thrusday",
-            "Friday", "Saturday", "Sunday"};
-    
-    private String dias_semana_FR[] = {"Lundi", "Mardi", "Mercredi", "Jeudi",
-            "Vendredi", "Samedi", "Dimanche"};
-    
-    private String dias_semana_IT[] = {"Lunedì", "Martedì", "Mercoledì", "Giovedì",
-            "Venerdì", "Sabato", "Domenica"};
-  
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         
         //Inicialización del ComboBox con los días de la semana
         //También tiene que traducirse
         
-        cbSemana.setItems(FXCollections.observableArrayList(dias_semana));
-        cbSemana.setValue("Lunes");
+        String dias_semana[] = {
+            rb.getString("lunes"),
+            rb.getString("martes"),
+            rb.getString("miercoles"),
+            rb.getString("jueves"),
+            rb.getString("viernes"),
+            rb.getString("sabado"),
+            rb.getString("domingo")};
         
+        cbSemana.setItems(FXCollections.observableArrayList(dias_semana));
+        cbSemana.setValue(rb.getString("lunes"));
+         
         cbNotas.setItems(FXCollections.observableArrayList(notas));
         cbNotas.setValue(5);
         
@@ -116,41 +114,42 @@ public class PrimaryController implements Initializable {
         
         Object evt = event.getSource();
         
-        if(evt.equals(btnIdiomaEEUU)) {            
+        if(evt.equals(btnIdiomaEEUU)) { 
             
             Locale l = new Locale("US");
-            LoadView(l, event); 
-     
+            LoadView(l);
+            
         } else if(evt.equals(btnIdiomaEspaña)) {
             
             Locale l = new Locale("ES");
-            LoadView(l, event);
+            LoadView(l);
             
-
         } else if(evt.equals(btnIdiomaReinoUnido)) {
             
             Locale l = new Locale("EN");
-            LoadView(l, event);
+            LoadView(l);
+            
         } else if(evt.equals(btnIdiomaFrancia)) {
-
             
             Locale l = new Locale("FR");
-            LoadView(l, event);
+            LoadView(l);
+            
         } else if(evt.equals(btnIdiomaItalia)) {
             
             Locale l = new Locale("IT");
-            LoadView(l, event);
+            LoadView(l);
+            
         }
     }
     
-    public void LoadView(Locale locale, Event event) {
+    public void LoadView(Locale locale) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("primary.fxml"));
         loader.setResources(ResourceBundle.getBundle("es.ideas.idiomas.bundle", locale));
         
         try {
             Parent root = loader.load();
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            stage = (Stage) btnIdiomaEspaña.getScene().getWindow();
             stage.setScene(new Scene(root, 1000, 700));
             stage.show();
         
@@ -164,7 +163,7 @@ public class PrimaryController implements Initializable {
         Alumno alumno = new Alumno();
       
         alumnoSelected = tableAlumnos.getSelectionModel().getSelectedItems();
-        
+
         txtInfoAlumno.setText(" - " + alumnoSelected.get(0).getNombre() + "\n" +
               " - " + alumnoSelected.get(0).getApellidos() + "\n" +
                " - " + alumnoSelected.get(0).getNota() + "\n");

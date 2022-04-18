@@ -67,7 +67,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <ChoiceBox fx:id="cbSemana" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" />                       
+                        <ChoiceBox fx:id="cbSemana" onInputMethodTextChanged="#onClickButton" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" />                       
                         <Label fx:id="txtDiaSemana" prefHeight="19.0" prefWidth="176.0" text="%diaSemana" textOverrun="WORD_ELLIPSIS" GridPane.halignment="CENTER">
                            <font>
                               <Font name="Cambria Bold" size="16.0" />
