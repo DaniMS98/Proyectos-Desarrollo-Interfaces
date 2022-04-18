@@ -7,16 +7,15 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -69,7 +68,7 @@ public class PrimaryController implements Initializable {
     @FXML
     private ChoiceBox<Integer> cbNotas;
     
-    ObservableList<Alumno> listaAlumnos = FXCollections.observableArrayList();
+    ObservableList<Alumno> listaAlumnos;
     ObservableList<Alumno> alumnoSelected;
     ObservableList<Alumno> listPassAlumn;
   
@@ -78,15 +77,12 @@ public class PrimaryController implements Initializable {
     private Stage stage;
     private Scene scene;
     
-    private Integer notas[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        
-        //Inicialización del ComboBox con los días de la semana
-        //También tiene que traducirse
-        
+        //Creamos un Array de String donde vamos a introducir la key que nos
+        //permitira acceder a los dias de la semana en diferentes idiomas
+        //ubicados en sus respectivos bundles de idioma
         String dias_semana[] = {
             rb.getString("lunes"),
             rb.getString("martes"),
@@ -96,59 +92,104 @@ public class PrimaryController implements Initializable {
             rb.getString("sabado"),
             rb.getString("domingo")};
         
+        //Inicializamos el ChoiceBox con el String[] creado
         cbSemana.setItems(FXCollections.observableArrayList(dias_semana));
+        //Añadimos como valor por defecto el primer dia de la semana
         cbSemana.setValue(rb.getString("lunes"));
          
+        //Creamos un Array de Integer para almacenar las notas del 1-10
+        Integer notas[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        
+        //Inicializamos el ChoiceBox con el Integer[] creado
         cbNotas.setItems(FXCollections.observableArrayList(notas));
+        
+        //Ponemos como valor por defecto el numero 5
         cbNotas.setValue(5);
         
+        //Indicamos en cada columna de la tabla el valor que va a almacenar
+        //usando la clase Alumno creada especialmente para el correcto
+        //funcionamiento de la tabla
         tableNombre.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
         tableApellidos.setCellValueFactory(new PropertyValueFactory<>("Apellidos"));
         tableNotas.setCellValueFactory(new PropertyValueFactory<>("Nota"));
-        tableAlumnos.setItems(listaAlumnos);
         
+        //Inicializamos la lista de Alumnos como un observable ArrayList
+        listaAlumnos = FXCollections.observableArrayList();     
     }
 
+    //Metodo que se iniciara cuando pulsemos cualquier boton de Idiomas.
+    //Su funcion sera cambiar la Vista al idioma en el que hemos hecho click
     @FXML
     private void onClickButton(ActionEvent event) throws IOException {
         
         Object evt = event.getSource();
         
-        if(evt.equals(btnIdiomaEEUU)) { 
+        if(evt.equals(btnIdiomaEEUU)) { //Si pulsamos en el boton de EEUU
             
+            //Creamos un objeto de tipo Locale que debe ser US 
+            //asi debe terminar nuestro archivo .properties
             Locale l = new Locale("US");
+            
+            //Llamamos al metodo LoadView y le pasamos el parametro creado anteriormente
             LoadView(l);
             
-        } else if(evt.equals(btnIdiomaEspaña)) {
+        } else if(evt.equals(btnIdiomaEspaña)) { //Si pulsamos en el boton de España
             
+            //Creamos un objeto de tipo Locale que debe ser ES 
+            //asi debe terminar nuestro archivo .properties
             Locale l = new Locale("ES");
+            
+            //Llamamos al metodo LoadView y le pasamos el parametro creado anteriormente
             LoadView(l);
             
-        } else if(evt.equals(btnIdiomaReinoUnido)) {
+        } else if(evt.equals(btnIdiomaReinoUnido)) { //Si pulsamos en el boton de Reino Unido
             
+            //Creamos un objeto de tipo Locale que debe ser EN 
+            //asi debe terminar nuestro archivo .properties
             Locale l = new Locale("EN");
+            
+            //Llamamos al metodo LoadView y le pasamos el parametro creado anteriormente
             LoadView(l);
             
-        } else if(evt.equals(btnIdiomaFrancia)) {
+        } else if(evt.equals(btnIdiomaFrancia)) { //Si pulsamos en el boton de Francia
             
+            //Creamos un objeto de tipo Locale que debe ser FR 
+            //asi debe terminar nuestro archivo .properties
             Locale l = new Locale("FR");
+            
+            //Llamamos al metodo LoadView y le pasamos el parametro creado anteriormente
             LoadView(l);
             
-        } else if(evt.equals(btnIdiomaItalia)) {
+        } else if(evt.equals(btnIdiomaItalia)) { //Si pulsamos en el boton de Italia
             
+            //Creamos un objeto de tipo Locale que debe ser IT
+            //asi debe terminar nuestro archivo .properties
             Locale l = new Locale("IT");
+            
+            //Llamamos al metodo LoadView y le pasamos el parametro creado anteriormente
             LoadView(l);
             
         }
     }
     
+    //Metodo que se invoca cuando lo llamamos desde el metodo OnClickButton
+    //para cargar una vista con el nuevo idioma
     public void LoadView(Locale locale) {
+        //Creamos un objeto de tipo FXMLLoader
         FXMLLoader loader = new FXMLLoader();
+        
+        //Indicamos la localizacion de nuestra vista fxml
         loader.setLocation(getClass().getResource("primary.fxml"));
+        
+        //Indicamos el lugar donde se encuentra nuestro bundle.properties
+        // y añadimos el archivo locale que hemos pasado en el metodo
         loader.setResources(ResourceBundle.getBundle("es.ideas.idiomas.bundle", locale));
         
         try {
+            //Carga todos los datos en un Parent
             Parent root = loader.load();
+            
+            //En el Stage indicamos el objeto Parent, las medidas y lo mostramos
             stage = (Stage) btnIdiomaEspaña.getScene().getWindow();
             stage.setScene(new Scene(root, 1000, 700));
             stage.show();
@@ -158,29 +199,68 @@ public class PrimaryController implements Initializable {
         }
     }
 
+    //Metodo que se invoca cuando pulsamos el boton Mostrar
+    //Para ello deberemos haber seleccionado un Alumno en el TableView anteriormente
     @FXML
     private void onClickMostrar(ActionEvent event) {
+        //Creamos un objeto de tipo Alumno
         Alumno alumno = new Alumno();
       
+        //alumnoSelected es un ObservableList de tipo String que guarda el
+        //Alumno seleccionado
         alumnoSelected = tableAlumnos.getSelectionModel().getSelectedItems();
 
+        //En el Label de informacion de alumno mostramos los datos de dicho
+        //Alumno por si queremos ver unicamente los datos de un Alumno
         txtInfoAlumno.setText(" - " + alumnoSelected.get(0).getNombre() + "\n" +
               " - " + alumnoSelected.get(0).getApellidos() + "\n" +
                " - " + alumnoSelected.get(0).getNota() + "\n");
     }
 
+    //Metodo que se invoca cuando pulsamos el boton Añadir
+    //Para ello deberemos haber seleccionado un Alumno en el TableView anteriormente
     @FXML
     private void onClickAdd(ActionEvent event) {
         
+        //Si rellenamos todos los campos (nombre, apellidos y nota) el codigo
+        //del if se ejecutara
+        if(!inputNombre.getText().isEmpty() && !inputApellidos.getText().isEmpty()) {
+        
+        //Guardamos todos los datos de los TextField y ChoiceBox
         String nombre = inputNombre.getText();
         String apellidos = inputApellidos.getText();
         Integer nota = cbNotas.getValue();
+        
+        //Creamos un objeto de tipo Alumno y agregamos los datos para crear uno
         Alumno alumno = new Alumno(nombre, apellidos, nota);
-        listaAlumnos.add(alumno);      
+        
+        //Añadimos el objeto alumno a la lista de Alumnos
+        listaAlumnos.add(alumno);
+        
+        //Agregamos la lista de Alumnos a la Table View
         tableAlumnos.setItems(listaAlumnos);
         
+        //Reseteamos los campos Nombre y Apellido y ponemos el valor
+        //por defecto de la nota
         inputNombre.setText("");
         inputApellidos.setText("");
         cbNotas.setValue(5);
+        
+        //Saltara una alerta que nos indicara que todo ha salido correctamente
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText("Mensaje de Confirmacion");
+        alert.setContentText("Los datos se han registrado correctamente.");
+        alert.showAndWait();
+            
+        } else { // En caso de no rellenar algun campo (nombre o apellido) saltara este codigo
+            
+            //Saltara una alerta que nos avisara que ha ocurrido un error
+            //por no rellenar los campos para agregar alumnos
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Error");
+            alert.setContentText("Hay campos vacios a la hora de añadir un Alumno.\n"
+                    + "Porfavor rellene todos los campos (nombre, apellidos y nota)");
+            alert.showAndWait();
+        }
     }
 }

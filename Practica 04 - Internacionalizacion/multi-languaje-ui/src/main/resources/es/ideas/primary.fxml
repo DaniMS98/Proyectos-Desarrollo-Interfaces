@@ -139,12 +139,12 @@
          <buttons>
             <AnchorPane prefHeight="52.0" prefWidth="715.0">
                <children>
-                  <Button fx:id="btnMostrar" layoutX="397.0" layoutY="10.0" mnemonicParsing="false" onAction="#onClickMostrar" text="%btnMostrar">
+                  <Button fx:id="btnMostrar" layoutX="397.0" layoutY="10.0" mnemonicParsing="false" onAction="#onClickMostrar" styleClass="btnDown" stylesheets="@hoja.css" text="%btnMostrar">
                      <font>
                         <Font name="Cambria Bold" size="17.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnAñadir" layoutX="539.0" layoutY="10.0" mnemonicParsing="false" onAction="#onClickAdd" text="%btnAñadir">
+                  <Button fx:id="btnAñadir" layoutX="539.0" layoutY="10.0" mnemonicParsing="false" onAction="#onClickAdd" styleClass="btnDown" stylesheets="@hoja.css" text="%btnAñadir">
                      <font>
                         <Font name="Cambria Bold" size="17.0" />
                      </font>
@@ -160,7 +160,7 @@
    <top>
       <ButtonBar prefHeight="68.0" prefWidth="684.0" style="-fx-border-style: solid;" BorderPane.alignment="CENTER">
         <buttons>
-          <Button fx:id="btnIdiomaEspaña" mnemonicParsing="false" onAction="#onClickButton" prefHeight="125.0">
+          <Button fx:id="btnIdiomaEspaña" mnemonicParsing="false" onAction="#onClickButton" prefHeight="125.0" styleClass="btnUp" stylesheets="@hoja.css">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -168,7 +168,7 @@
                      </image></ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btnIdiomaEEUU" mnemonicParsing="false" onAction="#onClickButton">
+            <Button fx:id="btnIdiomaEEUU" mnemonicParsing="false" onAction="#onClickButton" styleClass="btnUp" stylesheets="@hoja.css">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -176,7 +176,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="btnIdiomaFrancia" mnemonicParsing="false" onAction="#onClickButton">
+            <Button fx:id="btnIdiomaFrancia" mnemonicParsing="false" onAction="#onClickButton" styleClass="btnUp" stylesheets="@hoja.css">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -184,7 +184,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="btnIdiomaItalia" mnemonicParsing="false" onAction="#onClickButton">
+            <Button fx:id="btnIdiomaItalia" mnemonicParsing="false" onAction="#onClickButton" styleClass="btnUp" stylesheets="@hoja.css">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -192,7 +192,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="btnIdiomaReinoUnido" mnemonicParsing="false" onAction="#onClickButton">
+            <Button fx:id="btnIdiomaReinoUnido" mnemonicParsing="false" onAction="#onClickButton" styleClass="btnUp" stylesheets="@hoja.css">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                      <image>
