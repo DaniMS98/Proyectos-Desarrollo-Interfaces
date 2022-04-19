@@ -24,46 +24,135 @@ import javafx.util.Duration;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Dani
+ * El package Controlador es el Controller de nuestro MVC.<br><br>
+ * 
+ * Clase Controlador del Proyecto Temporizador que se encarga de diferentes funciones como
+ * referenciar los componentes graficos, crear valores necesarios para el funcionamiento del temporizador,
+ * añadir eventos para los componentes y utilizar Threads para simular el paso del 
+ * tiempo en los valores que utilizamos para mostrar el temporizador.<br>
+ * 
+ * <br><hr><br>
+ * 
+ * <b>Practica Temporizador - Estructura</b><br><br>
+ * El Proyecto esta compuesto por muchos paquetes de los cuales 3 paquetes 
+ * son de suma importancia al ser el modelo MVC (Modelo - Vista - Controlador):<br>
+ * 
+ * <ul>
+ * <li><b>Modelo:</b> Clase PracticaTemporizador {@link practicatemporizador.PracticaTemporizador}</li>
+ * <li><b>Vista:</b> Clase ViewTemporizador {@code vista.ViewTemporizador}</li>
+ * <li><b>Controlador:</b> Clase ViewTemporizadorController {@link controlador.ViewTemporizadorController}</li>
+ * <li><b>Estilos:</b> Hoja de Estilo Hoja.css {@code estilos.hoja.css}</li>
+ * <li><b>Imagenes:</b> Imagenes de la App {images.imagenes}</li>
+ * </ul><br>
+ * 
+ * @author Daniel Mayor Sánchez
+ * @see <a href="https://github.com/DaniMS98">Perfil de GitHub</a>
+ * @see <a href="https://github.com/DaniMS98/Proyectos-Desarrollo-Interfaces-DAM">Proyectos - Desarrollo de Interfaces</a>
+ * @see <a href="https://github.com/DaniMS98/Proyectos-Desarrollo-Interfaces-DAM/tree/master/Practica%2003%20-%20Animaciones%20y%20Estilos">Proyecto Temporizador</a>
+ * @see <a href="https://github.com/DaniMS98/Proyectos-Desarrollo-Interfaces-DAM/tree/master/Practica%2001%20-%20Colores">Proyecto Colores</a>
+ * @since 19/04/2022
+ * @version 1.0
  */
+
 public class ViewTemporizadorController implements Initializable {
     
-    //Creamos objetos y los referenciamos con el archivo FXML creado anteriormente
+    //Atributos
+    
+    /**
+     * Referencia a los Componentes de tipo AnchorPane creados desde la vista FXML 
+     */
 
     @FXML
-    private AnchorPane timePanel, menuPanel;
+    protected AnchorPane timePanel, menuPanel;
+    
+    /**
+     * Referencia a los Componentes de tipo Button creados desde la vista FXML 
+     */
     
     @FXML
-    private Button btnParar, btnConfigurar, btnReanudar, btnIniciar, btnHora;
+    protected Button btnParar, btnConfigurar, btnReanudar, btnIniciar, btnHora;
+    
+    /**
+     * Referencia a los Componentes de tipo Text creados desde la vista FXML 
+     */
     
     @FXML
-    private Text txtHora, txtMinutos, txtSegundos;
+    protected Text txtHora, txtMinutos, txtSegundos;
+    
+    /**
+     * Referencia a los Componentes de tipo ComboBox enteros creados desde la vista FXML 
+     */
     
     @FXML
-    private ComboBox<Integer> inputHoras, inputMinutos, inputSegundos;
+    protected ComboBox<Integer> inputHoras, inputMinutos, inputSegundos;
+    
+    /**
+     * Referencia a los Componentes de tipo TextField creados desde la vista FXML 
+     */
     
     @FXML   
-    private TextField txtRecordatorio;
+    protected TextField txtRecordatorio;
+    
+    /**
+     * Referencia a los Componentes de tipo Label creados desde la vista FXML 
+     */
     
     @FXML
-    private Label txtTarea;
+    protected Label txtTarea;
     
-    //Creamos variables necesarias para el 
-    //correcto funcionamiento de la aplicación
+    /**
+     * String para mostrar la hora, minutos y segundos del Temporizador junto
+     * a un mensaje de Recordatorio.
+     */
     
-    String mensaje, hora, minutos, segundos;
+    public String mensaje, hora, minutos, segundos;
     
-    Calendar calendario;
+    /**
+     * Objeto de tipo Calendar que sirve para recoger el valor de la 
+     * hora actual del usuario.
+     */
     
-    Map<Integer, String> mapaNumber;
+    public Calendar calendario;
     
-    Integer segundosActuales;
+    /**
+     * Mapa de Numeros que utilizaremos para registrar los numeros del Temporizador.
+     */
     
-    Thread trd, trHoraActual;
+    public Map<Integer, String> mapaNumber;
     
-     
-    //Metodo que le da valores iniciales a los objetos
+    /**
+     * Objeto de tipo Integer necesario para el transcurso del tiempo en el
+     * Temporizador una vez este en marcha.
+     */
+    
+    public Integer segundosActuales;
+    
+    /**
+     * Dos Threads: Uno de ellos es para el Temporizador,
+     * el otro para la hora actual.
+     */
+    
+    public Thread trd, trHoraActual;
+    
+     //Metodos
+    
+    /**
+     * Metodo Inicial que da valores predeterminados a los componentes graficos.<br><hr>
+     * 
+     * Se trata de un metodo que se encarga de inicializar listas de valores
+     * (Horas, Minutos y Segundos), meter los valores indicados a cada una de
+     * las listas a traves de un for que rellena la lista con los valores maximos.<br>
+     * 
+     * Dichos valores los inserta en los comboBox de horas, minutos y segundos 
+     * que usaremos para decirle al Temporizador el tiempo necesario que queremos.
+     * Iniciamos el Mapa de Numeros y le otorgamos valores hasta el 
+     * numero 59.<br>
+     * 
+     * @param url url necesaria
+     * @param rb ResourceBundle si queremos internacionalizar la aplicacion en diferentes idiomas
+     * <hr>
+     */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
@@ -104,12 +193,93 @@ public class ViewTemporizadorController implements Initializable {
             } else {
                 mapaNumber.put(i, i.toString());
             }
-           
         }
     }
+    
+    /**
+     * Metodo que inicia su evento cuando el usuario pulsa los botones: Configurar,
+     * Stop o Reanudar. Cada uno de estos botones realiza una funcion diferente.
+     * 
+     * <ul>
+     * <li><b>Configurar: </b> Invoca al metodo cambiarPanelTiempo() que 
+     * te devuelve al menu principal, ademas de parar el Thread de la Hora Actual
+     * en caso de que este activo.</li>
+     * <li><b>Parar:</b> Suspende el Thread del cronometro. El tiempo se para.</li>
+     * <li><b>Reanudar: </b>Reanuda el Thread del cronometro. El tiempo sigue desde
+     * el punto en el que nos quedamos al pulsar el boton Pausa.</li>
+     * </ul>
+     * 
+     * @param event registra el boton que ha sido pulsado
+     */
+    
+    @FXML
+    public void onClickButton(ActionEvent event) {   
+        Object evt = event.getSource();
+        
+        if(evt.equals(btnConfigurar)) {
+            txtTarea.setText("");
+            cambiarPanelTiempo();
 
-    //Este metodo convierte las horas y minutos en segundos
-    //para luego sumarlo todo (horas + minutos + segundos)
+            if(trHoraActual.isAlive()) {
+                trHoraActual.stop();
+            }
+        } else if(evt.equals(btnParar)) {       
+            trd.suspend();
+        } else if(evt.equals(btnReanudar)) {       
+            trd.resume();
+        } 
+    }
+    
+    /**
+     * Metodo que se invoca al pulsar el botón Iniciar que provoca un evento onClick.
+     * 
+     * Se trata de un metodo que se inicia al pulsar el botón Iniciar y provoca
+     * cambios en la vista:<br>
+     * <ol>
+     * <li>Cambian las propiedades y visibilidad de ciertos componentes graficos.</li>
+     * <li>Cambia el Panel que te envia al panel del Temporizador.</li>
+     * <li>Almacena los valores de los ComboBox convertidos a segundos en el entero segundosActuales</li>
+     * <li>Guarda el Recordatorio que haya escrito el usuario.</li>
+     * <li>Resetea todos los valores de los comboBox y Textfield.</li>
+     * <li>Por ultimo, invoca al metodo empezarCuentaAtras que inicia un Thread.</li>
+     * </ol>
+     * 
+     * @param event registra la accion del boton
+     */
+    
+    @FXML
+    public void onClickIniciar(ActionEvent event) {
+        btnReanudar.setVisible(true);
+        btnParar.setVisible(true);
+        btnConfigurar.setText("Configurar");
+        
+        cambiarPanelMenu();
+        
+        //Recoge todos los valores almacenados en los ComboBox de Horas, Minutos y Segundos
+        //y los mete en la variable segundosActuales
+        segundosActuales = convertirASegundos(inputHoras.getValue(), inputMinutos.getValue(), inputSegundos.getValue());
+        mensaje = txtRecordatorio.getText();
+        
+        inputHoras.setValue(0);
+        inputMinutos.setValue(0);
+        inputSegundos.setValue(0);
+        txtRecordatorio.setText("");
+        txtTarea.setText("Tarea: " + mensaje);
+        
+        empezarCuentaAtras();
+    }
+    
+    /** 
+     * Metodo que realiza el calculo de horas y minutos a segundos
+     * para crear un Integer que suma todos los valores de tiempo y
+     * devuelve el total del tiempo.
+     * 
+     * @param h Valor de las horas
+     * @param m Valor de los minutos
+     * @param s Valor de los segundos
+     * @return Tiempo total insertado en total
+     */
+    
     public Integer convertirASegundos(Integer h, Integer m, Integer s) {     
         Integer horaASegundos = h*3600;
         Integer minutoASegundos = m*60;
@@ -118,9 +288,15 @@ public class ViewTemporizadorController implements Initializable {
         return total;
     }
     
-    //Este metodo convierte los segundos en Horas y Minutos
-    //para luego meter las horas, minutos y segundos en un List
-    //y hacer un return de la lista
+    /**
+     * Metodo que crea varios Integer para almacenar las horas y minutos convertidos
+     * en segundos. Acto seguido, se crea una lista de enteros (tiempo) 
+     * donde añadimos las horas, minutos, segundos y devolvemos la lista de enteros.
+     * 
+     * @param segundosActual entero de tiempo que tiene la variable
+     * @return lista de enteros que almacena el tiempo total
+     */
+    
     public LinkedList<Integer> convertirSegundosAHoraMinutos(Integer segundosActual) {
         
         Integer horas = segundosActual / 3600;
@@ -139,8 +315,19 @@ public class ViewTemporizadorController implements Initializable {
         return tiempo;       
     }
     
-    //Metodo que empieza la Cuenta Atras del Temporizador
-    public void empezarCuentaAtras() {    
+    /**
+     * Metodo que controla la cuenta atras del tiempo que hemos
+     * seleccionado en el Menu.
+     * 
+     * <ol>
+     * <li>Inicia un Thread donde recoge la lista del tiempo total.</li>
+     * <li>Inserta en los Label los valores correspondientes de Horas, Minutos y Segundos.</li>
+     * <li>Provocamos un Thread cada segundo y restamos -1 a la variable segundosActuales.</li>
+     * <li>El tiempo llega a 0 y salta un mensaje Recordatorio junto al fin del Thread.</li>
+     * </ol>
+     */
+    
+    public void empezarCuentaAtras() {  
   
         trd = new Thread(new Runnable() {
             
@@ -166,6 +353,7 @@ public class ViewTemporizadorController implements Initializable {
                         
                         //Si los segundos llegan a 0 entonces salta un JOptionPane
                         //con el mensaje que habiamos escrito anteriormente
+                        
                         if(segundosActuales==0) {
                             JOptionPane.showMessageDialog(null, "El periodo de la tarea: " + mensaje + " ha finalizado." 
                                     , "RECORDATORIO", JOptionPane.INFORMATION_MESSAGE);
@@ -178,16 +366,19 @@ public class ViewTemporizadorController implements Initializable {
                 }
             }  
         });
-        
             trd.start();     
     }
     
-    public void cambiarAPanelMenu() {
-        //1.º Metodo (Sencillo): Hacemos Visible un Panel y el otro lo ocultamos
+    /**
+     * Metodo que visualiza el panel del Temporizador y oculta el panel del Menu
+     */
+    
+    public void cambiarPanelMenu() {
         menuPanel.setVisible(false);
         timePanel.setVisible(true);
         
         //2.º Metodo: Crear una Transicion donde movemos un Panel de un lado a otro
+        
         /*
         //Creamos la Transicion de la Primera Vista (Panel del Menu)
         //y le otorgamos la posicion donde queremos moverla
@@ -217,12 +408,16 @@ public class ViewTemporizadorController implements Initializable {
         */
     }
     
-    public void cambiarAPanelTiempo() {
-        //1.º Metodo (Sencillo): Hacemos Visible un Panel y el otro lo ocultamos
+    /**
+     * Metodo que visualiza el panel del Menu y oculta el panel del Temporizador
+     */
+    
+    public void cambiarPanelTiempo() {
         menuPanel.setVisible(true);
         timePanel.setVisible(false);
         
         //2.º Metodo: Crear una Transicion donde movemos un Panel de un lado a otro
+        
         /*
         //Creamos la Transicion de la Primera Vista (Panel del Menu
         //y le otorgamos la posicion donde queremos moverla
@@ -252,64 +447,27 @@ public class ViewTemporizadorController implements Initializable {
         */
     }
 
-    //Este evento se inicia al pulsar uno de los siguientes botones
-    // (Configurar, Stop, Cancelar, Reanudar)
-    @FXML
-    private void onClickButton(ActionEvent event) {   
-        Object evt = event.getSource();
-        
-        if(evt.equals(btnConfigurar)) {
-            txtTarea.setText("");
-            cambiarAPanelTiempo();
-
-            if(trHoraActual.isAlive()) {
-                trHoraActual.stop();
-            }
-        } else if(evt.equals(btnParar)) {       
-            trd.suspend();
-        } else if(evt.equals(btnReanudar)) {       
-            trd.resume();
-        } 
-    }
+    /**
+     * Metodo que se invoca al pulsar el botón Hora Actual que provoca un evento onClick.
+     * 
+     * Se trata de un metodo que se invoca al pulsar el botón de Hora Actual que
+     * cambia propiedades de distintos componentes graficos, reinicia los valores
+     * de ComboBox y Texfield ademas de invocar al metodo que da inicio al Thread
+     * de la Hora Actual del usuario.
+     * 
+     * @param event registra la accion del boton
+     */
     
-    //Iniciar la cuenta atras del Temporizador
     @FXML
-    private void onClickIniciar(ActionEvent event) {
-        btnReanudar.setVisible(true);
-        btnParar.setVisible(true);
-        btnConfigurar.setText("Configurar");
-        cambiarAPanelMenu();
-        
-        //Recoge todos los valores almacenados en los ComboBox de Horas, Minutos y Segundos
-        //y los mete en la variable segundosActuales
-        segundosActuales = convertirASegundos(inputHoras.getValue(), inputMinutos.getValue(), inputSegundos.getValue());
-        
-        //Guarda el mensaje escrito por el usuario
-        mensaje = txtRecordatorio.getText();
-        
-        //Reinicia los valores del ComboBox y TextField
-        inputHoras.setValue(0);
-        inputMinutos.setValue(0);
-        inputSegundos.setValue(0);
-        txtRecordatorio.setText("");
-        txtTarea.setText("Tarea: " + mensaje);
-        
-        //Se mueve al panel del Temporizador y empieza la Cuenta Atras
-        empezarCuentaAtras();
-    }
-
-    //Muestra la Hora Actual
-    @FXML
-    private void onClickHoraActual(ActionEvent event) {
+    public void onClickHoraActual(ActionEvent event) {
         //Cambia el Panel y oculta los Botones Reanudar y Parar
         //ya que no tienen ninguna funcion relevante al mostrarse la hora actual
         btnReanudar.setVisible(false);
         btnParar.setVisible(false);
         btnConfigurar.setText("Volver");
         txtTarea.setText("Hora Actual (España)");
-        cambiarAPanelMenu();
+        cambiarPanelMenu();
         
-        //Reinicia los valores del ComboBox y TextField
         inputHoras.setValue(0);
         inputMinutos.setValue(0);
         inputSegundos.setValue(0);
@@ -318,8 +476,16 @@ public class ViewTemporizadorController implements Initializable {
         empezarHoraActual();
     }
     
-    //Metodo que muestra la Hora Actual
-    private void empezarHoraActual() {
+    /**
+     * Metodo que interactua con la hora del Usuario para mostrarlo
+     * a tiempo real.
+     * 
+     * Se trata de un metodo que inicia un nuevo Thread que accede al metodo
+     * calcularHoraActual() que muestra la hora en tiempo real produciendose un
+     * Thread cada segundo e insertando la hora en los campos Hora, Minutos y Segundos.
+     */
+    
+    public void empezarHoraActual() {
 
         trHoraActual = new Thread(new Runnable() {
             @Override
@@ -347,8 +513,15 @@ public class ViewTemporizadorController implements Initializable {
         trHoraActual.start();
     }
         
-    //Metodo que permite calcular la Hora Actual del Usuario
-     private void calcularHoraActual() {
+    /**
+     * Metodo que se invoca para calcular la hora a tiempo real.
+     * 
+     * Se trata de un metodo que calcula la hora a tiempo real creando e inicializando
+     * objetos GregorianCalendar y Date con el proposito de insertar la hora actual 
+     * a traves de Strings (hora, minutos y segundos) dentro del objeto calendario. 
+     */
+    
+     public void calcularHoraActual() {
          //Inicializamos el objeto de tipo Calendar como un GregorianCalendar
          calendario = new GregorianCalendar();
          //Creamos un objeto Date
