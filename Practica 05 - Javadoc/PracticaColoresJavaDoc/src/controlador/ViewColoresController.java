@@ -31,7 +31,7 @@ import javafx.scene.paint.Color;
  * 
  * <b>Practica Colores - Estructura</b><br><br>
  * El Proyecto esta compuesto por 3 paquetes que se dividen
- *  en el modelo MVC (Modelo - Vista - Controlador):<br>
+ * en el modelo MVC (Modelo - Vista - Controlador):<br>
  * 
  * <ul>
  * <li><b>Modelo:</b> Clase PracticaColores {@link practicacolores.PracticaColores}</li>
@@ -50,45 +50,63 @@ import javafx.scene.paint.Color;
 
 public class ViewColoresController implements Initializable, ChangeListener {
   
-    /**
-     * Referencia a todos los Componentes Graficos creados desde la vista
-     * ViewColores.fxml. 
-     * 
-     * Se referencian a partir de un ID unico.
-     */
     //Atributos
-    @FXML
-    private Label txtR, txtG, txtB, txtRGB, lbColorRGB;
+    
+    /**
+     * Referencia a los Componentes de tipo Label creados desde la vista FXML 
+     */
     
     @FXML
-    private Slider slider1, slider2, slider3;
+    protected Label txtR, txtG, txtB, txtRGB, lbColorRGB;
+    
+    /**
+     * Referencia a los Componentes de tipo Slider creados desde la vista FXML 
+     */
     
     @FXML
-    private Button btnGuardar;
+    protected Slider slider1, slider2, slider3;
+    
+    /**
+     * Referencia a los Componentes de tipo Button creados desde la vista FXML 
+     */
     
     @FXML
-    private ListView<Color> listView1;
+    protected Button btnGuardar;
+    
+    /**
+     * Referencia a los Componentes de tipo ListView(Color) creados desde la vista FXML 
+     */
     
     @FXML
-    private Color miColor;
+    protected ListView<Color> listView1;
+    
+    /**
+     * Referencia a los Componentes de tipo Color creados desde la vista FXML 
+     */
+    
+    @FXML
+    protected Color miColor;
     
     /**
      * Integer utilizados para recoger el valor de los Slider que conforman
      * los 3 colores de la aplicacion
      */
     
-    int miSlider1, miSlider2, miSlider3;
+    public int miSlider1, miSlider2, miSlider3;
+    
+    //Metodos
     
     /**
-     * 
      * Metodo Inicial que se encarga de iniciar los componentes con las propiedades
      * por defecto que hayamos programado ademas de dar funciones de evento
      * a diferentes componentes como Listas o Sliders.
      * 
-     * @param url
-     * @param rb 
+     * Dentro del metodo Inicial encontramos el metodo ChangeListener 
+     * que se ejecuta cada vez que el usuario seleccione un elemento de la lista.
+     * 
+     * @param url url necesaria
+     * @param rb ResourceBundle si queremos internacionalizar la aplicacion en diferentes idiomas
      */
-    //Metodos
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -100,26 +118,19 @@ public class ViewColoresController implements Initializable, ChangeListener {
         slider2.valueProperty().addListener(this);
         slider3.valueProperty().addListener(this);
         
-        /**
-         * Metodo ChangeListener que se ejecuta cada vez que el usuario
-         * seleccione un elemento de la lista.
-         * 
-         * La función de este metodo es recoger con el objeto miColor
-         * los datos del elemento seleccionado en la lista con el fin
-         * de añadir el Background de un Label del color que hayamos recogido
-         * con el componente miColor.
-         */
-        
         listView1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Color>() {
            
+         /*La función de este metodo es recoger con el objeto miColor
+         * los datos del elemento seleccionado en la lista con el fin
+         * de añadir el Background de un Label del color que hayamos recogido
+         * con el componente miColor. 
+         */ 
+   
             @Override
-            public void changed(ObservableValue<? extends Color> observable, Color oldValue, Color newValue) {
-              
+            public void changed(ObservableValue<? extends Color> observable, Color oldValue, Color newValue) {  
                 miColor = listView1.getSelectionModel().getSelectedItem();
                 lbColorRGB.setBackground(new Background(new BackgroundFill(miColor, CornerRadii.EMPTY, Insets.EMPTY)));
-                
-            }
-            
+            }      
         });
     }    
     
@@ -128,9 +139,9 @@ public class ViewColoresController implements Initializable, ChangeListener {
      * para recoger los valores de los Sliders de la aplicacion y mostrar en 
      * un Label los valores RGB que estamos seleccionando
      * 
-     * @param observable
-     * @param oldValue
-     * @param newValue 
+     * @param observable Valor
+     * @param oldValue Valor antiguo
+     * @param newValue Valor nuevo
      */
     
     @Override
@@ -162,7 +173,7 @@ public class ViewColoresController implements Initializable, ChangeListener {
      * </ul>
      */
 
-    private void generarColorRGB() {
+    public void generarColorRGB() {
         
         miColor = Color.rgb(miSlider1, miSlider2, miSlider3);
         lbColorRGB.setBackground(new Background(new BackgroundFill(miColor, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -174,13 +185,11 @@ public class ViewColoresController implements Initializable, ChangeListener {
      * Metodo encargado de guardar los valores RGB en los elementos
      * del ListView de la aplicación.
      * 
-     * @param event registra el evento del Boton
+     * @param event registra el evento del botón
      */
     
     @FXML
-    private void onClickGuardar(ActionEvent event) {
-        
+    public void onClickGuardar(ActionEvent event) {
         listView1.getItems().add(Color.rgb(miSlider1, miSlider2, miSlider3));
-    }
-    
+    }   
 }
