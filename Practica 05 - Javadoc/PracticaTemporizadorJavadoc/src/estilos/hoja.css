@@ -1,0 +1,83 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 14 abr. 2022, 21:56:29
+    Author     : Dani
+*/
+
+#btnIniciar {
+     -fx-background-color: #424699;
+     -fx-text-fill: white;
+ }
+ 
+ #btnIniciar:hover {
+     -fx-background-color: #CCD5FF;
+     -fx-text-fill: white;
+ }
+ 
+ #btnIniciar:pressed {
+     -fx-background-color: #474D66;
+     -fx-text-fill: white;
+ }
+ 
+ #btnHora {
+     -fx-background-color: #424699;
+     -fx-text-fill: white;
+ }
+ 
+ #btnHora:hover {
+     -fx-background-color: #CCD5FF;
+     -fx-text-fill: white;
+ }
+ 
+ #btnHora:pressed {
+     -fx-background-color: #474D66;
+     -fx-text-fill: white;
+ }
+ 
+ #btnConfigurar {
+     -fx-background-color: #424699;
+     -fx-text-fill: white;
+ }
+ 
+ #btnConfigurar:hover {
+     -fx-background-color: #CCD5FF;
+     -fx-text-fill: white;
+ }
+ 
+ #btnConfigurar:pressed {
+     -fx-background-color: #474D66;
+     -fx-text-fill: white;
+ }
+ 
+ #btnParar {
+     -fx-background-color: #424699;
+     -fx-text-fill: white;
+ }
+ 
+ #btnParar:hover {
+     -fx-background-color: #CCD5FF;
+     -fx-text-fill: white;
+ }
+ 
+ #btnParar:pressed {
+     -fx-background-color: #474D66;
+     -fx-text-fill: white;
+ }
+ 
+ #btnReanudar {
+     -fx-background-color: #424699;
+     -fx-text-fill: white;
+ }
+ 
+ #btnReanudar:hover {
+     -fx-background-color: #CCD5FF;
+     -fx-text-fill: white;
+ }
+ 
+ #btnReanudar:pressed {
+     -fx-background-color: #474D66;
+     -fx-text-fill: white;
+ }
