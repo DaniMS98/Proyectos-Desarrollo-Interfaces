@@ -139,6 +139,52 @@ public class ViewTemporizadorController implements Initializable {
         return tiempo;       
     }
     
+        //Este evento se inicia al pulsar uno de los siguientes botones
+    // (Configurar, Stop, Cancelar, Reanudar)
+    @FXML
+    private void onClickButton(ActionEvent event) {   
+        Object evt = event.getSource();
+        
+        if(evt.equals(btnConfigurar)) {
+            txtTarea.setText("");           
+            cambiarPanelTiempo();
+            
+            if(trHoraActual.isAlive()) {
+                trHoraActual.stop();
+            }
+        } else if(evt.equals(btnParar)) {       
+            trd.suspend();
+        } else if(evt.equals(btnReanudar)) {       
+            trd.resume();
+        } 
+    }
+    
+    //Iniciar la cuenta atras del Temporizador
+    @FXML
+    private void onClickIniciar(ActionEvent event) {
+        btnReanudar.setVisible(true);
+        btnParar.setVisible(true);
+        btnConfigurar.setText("Configurar");
+        cambiarPanelMenu();
+        
+        //Recoge todos los valores almacenados en los ComboBox de Horas, Minutos y Segundos
+        //y los mete en la variable segundosActuales
+        segundosActuales = convertirASegundos(inputHoras.getValue(), inputMinutos.getValue(), inputSegundos.getValue());
+        
+        //Guarda el mensaje escrito por el usuario
+        mensaje = txtRecordatorio.getText();
+        
+        //Reinicia los valores del ComboBox y TextField
+        inputHoras.setValue(0);
+        inputMinutos.setValue(0);
+        inputSegundos.setValue(0);
+        txtRecordatorio.setText("");
+        txtTarea.setText("Tarea: " + mensaje);
+        
+        //Se mueve al panel del Temporizador y empieza la Cuenta Atras
+        empezarCuentaAtras();
+    }
+    
     //Metodo que empieza la Cuenta Atras del Temporizador
     public void empezarCuentaAtras() {    
   
@@ -169,6 +215,7 @@ public class ViewTemporizadorController implements Initializable {
                         if(segundosActuales==0) {
                             JOptionPane.showMessageDialog(null, "El periodo de la tarea: " + mensaje + " ha finalizado." 
                                     , "RECORDATORIO", JOptionPane.INFORMATION_MESSAGE);
+                            cambiarPanelTiempo();
                             trd.stop();
                         }  
                         segundosActuales -= 1;                               
@@ -182,13 +229,13 @@ public class ViewTemporizadorController implements Initializable {
             trd.start();     
     }
     
-    public void cambiarAPanelMenu() {
+    public void cambiarPanelMenu() {
         //1.º Metodo (Sencillo): Hacemos Visible un Panel y el otro lo ocultamos
-        menuPanel.setVisible(false);
-        timePanel.setVisible(true);
+        //menuPanel.setVisible(false);
+        //timePanel.setVisible(true);
         
         //2.º Metodo: Crear una Transicion donde movemos un Panel de un lado a otro
-        /*
+        
         //Creamos la Transicion de la Primera Vista (Panel del Menu)
         //y le otorgamos la posicion donde queremos moverla
         TranslateTransition transl1 = new TranslateTransition();
@@ -214,17 +261,17 @@ public class ViewTemporizadorController implements Initializable {
         
         ParallelTransition parallel = new ParallelTransition(transl1, transl2);
         parallel.play();  
-        */
+        
     }
     
-    public void cambiarAPanelTiempo() {
+    public void cambiarPanelTiempo() {
         //1.º Metodo (Sencillo): Hacemos Visible un Panel y el otro lo ocultamos
-        menuPanel.setVisible(true);
-        timePanel.setVisible(false);
+        //menuPanel.setVisible(true);
+        //timePanel.setVisible(false);
         
         //2.º Metodo: Crear una Transicion donde movemos un Panel de un lado a otro
-        /*
-        //Creamos la Transicion de la Primera Vista (Panel del Menu
+        
+        //Creamos la Transicion de la Primera Vista (Panel del Temporizador)
         //y le otorgamos la posicion donde queremos moverla
         TranslateTransition transl1 = new TranslateTransition();
         
@@ -233,7 +280,7 @@ public class ViewTemporizadorController implements Initializable {
         transl1.setToY(500);       
         transl1.setNode(timePanel);
         
-        //Lo mismo con la Segunda Vista (Panel del Temporizador)
+        //Lo mismo con la Segunda Vista (Panel del Menu)
         
         TranslateTransition transl2 = new TranslateTransition();
         
@@ -249,53 +296,7 @@ public class ViewTemporizadorController implements Initializable {
         
         ParallelTransition parallel = new ParallelTransition(transl1, transl2);
         parallel.play();
-        */
-    }
-
-    //Este evento se inicia al pulsar uno de los siguientes botones
-    // (Configurar, Stop, Cancelar, Reanudar)
-    @FXML
-    private void onClickButton(ActionEvent event) {   
-        Object evt = event.getSource();
         
-        if(evt.equals(btnConfigurar)) {
-            txtTarea.setText("");
-            cambiarAPanelTiempo();
-
-            if(trHoraActual.isAlive()) {
-                trHoraActual.stop();
-            }
-        } else if(evt.equals(btnParar)) {       
-            trd.suspend();
-        } else if(evt.equals(btnReanudar)) {       
-            trd.resume();
-        } 
-    }
-    
-    //Iniciar la cuenta atras del Temporizador
-    @FXML
-    private void onClickIniciar(ActionEvent event) {
-        btnReanudar.setVisible(true);
-        btnParar.setVisible(true);
-        btnConfigurar.setText("Configurar");
-        cambiarAPanelMenu();
-        
-        //Recoge todos los valores almacenados en los ComboBox de Horas, Minutos y Segundos
-        //y los mete en la variable segundosActuales
-        segundosActuales = convertirASegundos(inputHoras.getValue(), inputMinutos.getValue(), inputSegundos.getValue());
-        
-        //Guarda el mensaje escrito por el usuario
-        mensaje = txtRecordatorio.getText();
-        
-        //Reinicia los valores del ComboBox y TextField
-        inputHoras.setValue(0);
-        inputMinutos.setValue(0);
-        inputSegundos.setValue(0);
-        txtRecordatorio.setText("");
-        txtTarea.setText("Tarea: " + mensaje);
-        
-        //Se mueve al panel del Temporizador y empieza la Cuenta Atras
-        empezarCuentaAtras();
     }
 
     //Muestra la Hora Actual
@@ -307,7 +308,7 @@ public class ViewTemporizadorController implements Initializable {
         btnParar.setVisible(false);
         btnConfigurar.setText("Volver");
         txtTarea.setText("Hora Actual (España)");
-        cambiarAPanelMenu();
+        cambiarPanelMenu();
         
         //Reinicia los valores del ComboBox y TextField
         inputHoras.setValue(0);
