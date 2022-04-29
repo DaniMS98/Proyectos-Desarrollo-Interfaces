@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ResourceBundle;
+import javafx.scene.image.Image;
 import javafx.stage.StageStyle;
 
 /**
@@ -35,6 +36,7 @@ public class MultiLenguajeUI extends Application {
       
         //Indicamos el Titulo de la Ventana y el Estilo
         stage.setTitle("Multi-Lenguaje");
+        stage.getIcons().add(new Image("es/ideas/pictures/espana.png"));
         stage.initStyle(StageStyle.DECORATED);
         
         //Seleccionamos la ventana y sus medidas
