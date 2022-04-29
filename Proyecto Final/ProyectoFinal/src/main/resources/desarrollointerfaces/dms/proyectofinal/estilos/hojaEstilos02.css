@@ -1,0 +1,105 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 12 abr. 2022, 13:08:11
+    Author     : Dani
+*/
+
+#btnControl1 {
+    -fx-background-color: #339900;
+    -fx-background-radius: 10;
+    -fx-background-size: 10;
+    -fx-text-fill: white;
+}
+
+#btnControl1:hover {
+     -fx-background-color: #CCD5FF;
+     -fx-text-fill: black;
+     -fx-scale-x: 1.5;
+     -fx-scale-y: 1.5;
+ }
+ 
+ #btnControl1:pressed {
+     -fx-background-color: #009999;
+     -fx-text-fill: brown;
+     -fx-fill-width: 50;
+     -fx-scale-x: 2;
+     -fx-scale-y: 2;
+ }
+ 
+ #btnControl2 {
+     -fx-background-color: #9999ff;
+    -fx-background-size: 50;
+    -fx-text-fill: black;
+    -fx-font-style: bold;
+    -fx-content-display: right;
+    -fx-alignment: TOP_RIGHT;
+    -fx-scale-x: 1;
+     -fx-scale-y: 2;
+   
+}
+
+#btnControl2:selected {
+    -fx-background-color: #66ff66;
+    -fx-background-size: 35;
+    -fx-text-fill: #99ff99;
+    -fx-content-display: left;
+    -fx-alignment: TOP_LEFT;
+    -fx-rotate: 240;
+    -fx-scale-x: 1.5;
+     -fx-scale-y: 1.5;
+    -fx-font: sans-serif;
+}
+
+#btnControl3 {
+    -fx-background-color: #83F29B;
+    -fx-background-size: 10;
+    -fx-text-fill: orange;
+    -fx-font-style: bold;
+    -fx-orientation: 180;
+    -fx-label-padding: 10,10,10,10;
+}
+
+#btnControl3:selected {
+    -fx-background-color: #376641;
+    -fx-background-size: 10;
+    -fx-text-fill: black;
+    -fx-font-style: bold;
+    -fx-content-display: right;
+    -fx-alignment: TOP_RIGHT;
+    -fx-scale-x: 1.5;
+     -fx-scale-y: 1.5;
+    -fx-label-padding: 5,5,5,5;
+}
+
+#btnControl4 {
+    -fx-background-color: #998B7A;
+    -fx-text-fill: #66663F;
+    -fx-font-style: italic;
+    -fx-scale-x: 1.5;
+    -fx-padding: 10;
+    -fx-scale-y: 1.5;
+}
+
+#btnControl5 {
+    -fx-background-color: #A6A667;
+    -fx-background-radius: 55;
+    -fx-background-size: 10;
+    -fx-text-fill: brown;
+    -fx-font-style: italic;
+    -fx-rotate: 0;
+}
+
+#btnControl5:selected {
+    -fx-background-color: #E6E68E;
+    -fx-background-radius: 55;
+    -fx-background-size: 10;
+    -fx-text-fill: black;
+    -fx-scale-x: 1.5;
+     -fx-scale-y: 1.5;
+    -fx-font-style: bold;
+    -fx-rotate: 180;
+}
+
