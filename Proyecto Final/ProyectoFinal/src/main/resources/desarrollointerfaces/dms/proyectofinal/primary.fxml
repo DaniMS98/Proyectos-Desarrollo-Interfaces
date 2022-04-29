@@ -6,5 +6,6 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desarrollointerfaces.dms.proyectofinal.PrimaryController">
    <children>
       <Button fx:id="btnAppColores" layoutX="77.0" layoutY="118.0" onAction="#cambiarAppColores" text="Aplicacion Colores" />
+      <Button fx:id="btnAppEstilos" layoutX="376.0" layoutY="118.0" onAction="#cambiarAppEstilos" text="Aplicacion Hojas de Estilos" />
    </children>
 </AnchorPane>
