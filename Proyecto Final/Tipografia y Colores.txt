@@ -2,4 +2,5 @@ Tipografia: Georgia
 Color 01: #FFE49E
 Color 02: #425DAD
 Color 03: #A7BCFA
-Color 04: #AD9249
+Color 04: #CBDBF8
+Color 05: #AD9249
