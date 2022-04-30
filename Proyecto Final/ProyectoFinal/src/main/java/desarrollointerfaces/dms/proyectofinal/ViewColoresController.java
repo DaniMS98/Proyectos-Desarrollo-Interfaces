@@ -103,6 +103,8 @@ public class ViewColoresController implements Initializable, ChangeListener {
         listView1.getItems().add(Color.rgb(miSlider1, miSlider2, miSlider3));
     }
 
+    //Metodo que cierra la aplicación para devolver al usuario al menu principal
+    //donde se encuentran todas las aplicaciones
     public void closeWindows() {
         
         try {

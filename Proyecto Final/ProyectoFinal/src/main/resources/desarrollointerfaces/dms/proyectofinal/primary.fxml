@@ -8,5 +8,6 @@
       <Button fx:id="btnAppColores" layoutX="77.0" layoutY="118.0" onAction="#cambiarAppColores" text="Aplicacion Colores" />
       <Button fx:id="btnAppEstilos" layoutX="376.0" layoutY="118.0" onAction="#cambiarAppEstilos" text="Aplicacion Hojas de Estilos" />
       <Button fx:id="btnAppTemporizador" layoutX="56.0" layoutY="244.0" onAction="#cambiarAppTemporizador" text="Aplicacion Temporizador" />
+      <Button fx:id="btnAppInternacionalizacion" layoutX="381.0" layoutY="244.0" onAction="#cambiarAppInternacionalizacion" text="Aplicacion Internacionalizacion" />
    </children>
 </AnchorPane>

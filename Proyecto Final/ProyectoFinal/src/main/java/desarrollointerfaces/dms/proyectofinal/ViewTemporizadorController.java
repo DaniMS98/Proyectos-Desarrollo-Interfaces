@@ -373,7 +373,8 @@ public class ViewTemporizadorController implements Initializable {
          segundos = calendario.get(Calendar.SECOND) > 9 ? "" + calendario.get(Calendar.SECOND) : "0" + calendario.get(Calendar.SECOND);   
      }
      
-     
+    //Metodo que cierra la aplicación para devolver al usuario al menu principal
+    //donde se encuentran todas las aplicaciones
         public void closeWindows() {
         
         try {

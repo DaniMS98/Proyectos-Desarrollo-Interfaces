@@ -134,6 +134,8 @@ public class ViewEstilosController implements Initializable {
         // TODO
     }    
     
+    //Metodo que cierra la aplicación para devolver al usuario al menu principal
+    //donde se encuentran todas las aplicaciones
         public void closeWindows() {
         
         try {

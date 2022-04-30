@@ -32,6 +32,8 @@ public class PrimaryController implements Initializable {
     private Button btnAppEstilos;
     @FXML
     private Button btnAppTemporizador;
+    @FXML
+    private Button btnAppInternacionalizacion;
 
     /**
      * Initializes the controller class.
@@ -112,6 +114,10 @@ public class PrimaryController implements Initializable {
                 
     }
 
+    /*
+    Cambiar a la Aplicación del Temporizador
+    */
+    
     @FXML
     private void cambiarAppTemporizador(ActionEvent event) {
         
@@ -143,6 +149,45 @@ public class PrimaryController implements Initializable {
             ex.printStackTrace();
         }
         
+    }
+
+    /*
+    Cambiar a la Aplicación de Internacionalización
+    */
+    
+    @FXML
+    private void cambiarAppInternacionalizacion(ActionEvent event) {
+        
+        try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewIntern.fxml"));
+        
+        loader.setResources(ResourceBundle.getBundle("desarrollointerfaces.dms.proyectofinal.idiomas.bundle"));
+       
+        Parent root = loader.load();
+        
+        ViewInternacionalizacionController controladorInternacionalizacion = loader.getController();
+        
+        Scene scene = new Scene(root, 1000, 700);
+        Stage stage = new Stage();
+        
+        String css = this.getClass().getResource("estilos/hojaInternacionalizacion.css").toExternalForm();
+        scene.getStylesheets().add(css);
+        
+        stage.setScene(scene);
+        stage.setTitle("Aplicación Internacionalización");
+        stage.getIcons().add(new Image("desarrollointerfaces/dms/proyectofinal/images/espana.png"));
+        stage.initStyle(StageStyle.DECORATED);
+        stage.show();
+        
+        stage.setOnCloseRequest(eh -> controladorInternacionalizacion.closeWindows());
+        
+        Stage miStage = (Stage) this.btnAppInternacionalizacion.getScene().getWindow();
+        miStage.close();
+        
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+                  
     }
     
 }
