@@ -1,0 +1,41 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 18 abr. 2022, 22:25:39
+    Author     : Dani
+
+En esta hoja estan los estilos de los botones de la aplicacion junto con
+sus diferentes estados: normal, hover, pressed
+*/
+
+
+
+.btnDown {
+    -fx-background-color: #DBB54C;
+     -fx-text-fill: white;
+}
+
+.btnDown:hover {
+    -fx-background-color: #DBD358;
+     -fx-text-fill: white;
+}
+
+.btnDown:pressed {
+    -fx-background-color: #DB9042;
+     -fx-text-fill: white;
+}
+
+.btnUp {
+    -fx-background-color: #A9CCDB;
+
+}
+
+.btnUp:hover {
+    -fx-background-color: #7D9DDB;
+}
+
+.btnUp:pressed {
+    -fx-background-color: #92B8DB;
+}

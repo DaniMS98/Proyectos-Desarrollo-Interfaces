@@ -1,0 +1,82 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 30 abr. 2022, 12:42:29
+    Author     : Dani
+*/
+
+.root {
+   -fx-font-family: 'Georgia';
+}
+
+.lb1 {
+    -fx-text-fill: #AD9249;
+}
+
+.anchorpane {
+    -fx-background-color: #FFE49E;
+}
+
+.btnAppColores {
+    -fx-background-color: #425DAD;
+     -fx-text-fill: white;
+     
+}
+
+.btnAppColores:hover {
+    -fx-background-color: #A7BCFA;
+    -fx-text-fill: white;
+}
+
+.btnAppColores:pressed {
+    -fx-background-color: #CBDBF8;
+    -fx-text-fill: white;
+}
+
+.btnAppEstilos {
+    -fx-background-color: #425DAD;
+     -fx-text-fill: white;
+}
+
+.btnAppEstilos:hover {
+    -fx-background-color: #A7BCFA;
+    -fx-text-fill: white;
+}
+
+.btnAppEstilos:pressed {
+    -fx-background-color: #CBDBF8;
+    -fx-text-fill: white;
+}
+
+.btnAppTemporizador {
+    -fx-background-color: #425DAD;
+     -fx-text-fill: white;
+}
+
+.btnAppTemporizador:hover {
+    -fx-background-color: #A7BCFA;
+    -fx-text-fill: white;
+}
+
+.btnAppTemporizador:pressed {
+    -fx-background-color: #CBDBF8;
+    -fx-text-fill: white;
+}
+
+.btnAppInternacionalizacion {
+    -fx-background-color: #425DAD;
+     -fx-text-fill: white;
+}
+
+.btnAppInternacionalizacion:hover {
+    -fx-background-color: #A7BCFA;
+    -fx-text-fill: white;
+}
+
+.btnAppInternacionalizacion:pressed {
+    -fx-background-color: #CBDBF8;
+    -fx-text-fill: white;
+}
+

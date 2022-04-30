@@ -30,6 +30,10 @@ public class PrimaryController implements Initializable {
     private Button btnAppColores;
     @FXML
     private Button btnAppEstilos;
+    @FXML
+    private Button btnAppTemporizador;
+    @FXML
+    private Button btnAppInternacionalizacion;
 
     /**
      * Initializes the controller class.
@@ -108,6 +112,82 @@ public class PrimaryController implements Initializable {
             ex.printStackTrace();
         }
                 
+    }
+
+    /*
+    Cambiar a la Aplicación del Temporizador
+    */
+    
+    @FXML
+    private void cambiarAppTemporizador(ActionEvent event) {
+        
+          try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewTemporizador.fxml"));
+       
+        Parent root = loader.load();
+        
+        ViewTemporizadorController controladorTemporizador = loader.getController();
+        
+        Scene scene = new Scene(root, 850, 400);
+        Stage stage = new Stage();
+        
+        String css = this.getClass().getResource("estilos/hojaTemporizador.css").toExternalForm();
+        scene.getStylesheets().add(css);
+        
+        stage.setScene(scene);
+        stage.setTitle("Aplicación Temporizador");
+        stage.getIcons().add(new Image("desarrollointerfaces/dms/proyectofinal/images/icono.png"));
+        stage.initStyle(StageStyle.DECORATED);
+        stage.show();
+        
+        stage.setOnCloseRequest(eh -> controladorTemporizador.closeWindows());
+        
+        Stage miStage = (Stage) this.btnAppTemporizador.getScene().getWindow();
+        miStage.close();
+        
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        
+    }
+
+    /*
+    Cambiar a la Aplicación de Internacionalización
+    */
+    
+    @FXML
+    private void cambiarAppInternacionalizacion(ActionEvent event) {
+        
+        try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewIntern.fxml"));
+        
+        loader.setResources(ResourceBundle.getBundle("desarrollointerfaces.dms.proyectofinal.idiomas.bundle"));
+       
+        Parent root = loader.load();
+        
+        ViewInternacionalizacionController controladorInternacionalizacion = loader.getController();
+        
+        Scene scene = new Scene(root, 1000, 700);
+        Stage stage = new Stage();
+        
+        String css = this.getClass().getResource("estilos/hojaInternacionalizacion.css").toExternalForm();
+        scene.getStylesheets().add(css);
+        
+        stage.setScene(scene);
+        stage.setTitle("Aplicación Internacionalización");
+        stage.getIcons().add(new Image("desarrollointerfaces/dms/proyectofinal/images/espana.png"));
+        stage.initStyle(StageStyle.DECORATED);
+        stage.show();
+        
+        stage.setOnCloseRequest(eh -> controladorInternacionalizacion.closeWindows());
+        
+        Stage miStage = (Stage) this.btnAppInternacionalizacion.getScene().getWindow();
+        miStage.close();
+        
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+                  
     }
     
 }
