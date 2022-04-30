@@ -19,12 +19,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Slider;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -113,10 +115,18 @@ public class ViewColoresController implements Initializable, ChangeListener {
             
             Parent root = loader.load();
             
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root, 500, 300);
             Stage stage = new Stage();
             
+            String css = this.getClass().getResource("estilos/hojaPrincipal.css").toExternalForm();
+            scene.getStylesheets().add(css);
+            
             stage.setScene(scene);
+            
+            stage.setTitle("Recopilacion de Proyectos - Desarrollo de Interfaces");
+            stage.getIcons().add(new Image("desarrollointerfaces/dms/proyectofinal/images/iconoPrincipal.png"));
+            stage.initStyle(StageStyle.DECORATED);
+            
             stage.show();
             
             Stage miStage = (Stage) this.btnGuardar.getScene().getWindow();
