@@ -30,6 +30,8 @@ public class PrimaryController implements Initializable {
     private Button btnAppColores;
     @FXML
     private Button btnAppEstilos;
+    @FXML
+    private Button btnAppTemporizador;
 
     /**
      * Initializes the controller class.
@@ -108,6 +110,39 @@ public class PrimaryController implements Initializable {
             ex.printStackTrace();
         }
                 
+    }
+
+    @FXML
+    private void cambiarAppTemporizador(ActionEvent event) {
+        
+          try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewTemporizador.fxml"));
+       
+        Parent root = loader.load();
+        
+        ViewTemporizadorController controladorTemporizador = loader.getController();
+        
+        Scene scene = new Scene(root, 850, 400);
+        Stage stage = new Stage();
+        
+        String css = this.getClass().getResource("estilos/hojaTemporizador.css").toExternalForm();
+        scene.getStylesheets().add(css);
+        
+        stage.setScene(scene);
+        stage.setTitle("Aplicación Temporizador");
+        stage.getIcons().add(new Image("desarrollointerfaces/dms/proyectofinal/images/icono.png"));
+        stage.initStyle(StageStyle.DECORATED);
+        stage.show();
+        
+        stage.setOnCloseRequest(eh -> controladorTemporizador.closeWindows());
+        
+        Stage miStage = (Stage) this.btnAppTemporizador.getScene().getWindow();
+        miStage.close();
+        
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        
     }
     
 }
