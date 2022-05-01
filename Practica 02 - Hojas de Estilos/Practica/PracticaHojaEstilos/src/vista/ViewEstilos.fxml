@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ViewEstilosController">
+<HBox fx:id="hbox" stylesheets="@../estilos/hojaprincipal.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ViewEstilosController">
    <children>
-      <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="279.0" style="-fx-background-color: #8FA0E6;" styleClass="vBox1" HBox.hgrow="ALWAYS">
+      <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="358.0" style="-fx-background-color: #8FA0E6;" styleClass="vBox1">
          <children>
-            <Button fx:id="btnEstilo1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClickEstilos" prefHeight="50.0" prefWidth="200.0" stylesheets="@../estilos/hojaprincipal.css" text="Hoja Estilos #1" textAlignment="CENTER" textFill="WHITE" VBox.vgrow="ALWAYS">
+            <Button id="btnEstilo1" fx:id="btnEstilo1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClickEstilos" prefHeight="50.0" prefWidth="200.0" stylesheets="@../estilos/hojaprincipal.css" text="Hoja Estilos #1" textAlignment="CENTER" textFill="WHITE" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets top="100.0" />
                </VBox.margin>
@@ -22,7 +22,7 @@
                   <Font name="DejaVu Sans Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btnEstilo2" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClickEstilos" prefHeight="50.0" prefWidth="200.0" stylesheets="@../estilos/hojaprincipal.css" text="Hoja Estilos #2" textAlignment="CENTER" textFill="WHITE">
+            <Button id="btnEstilo2" fx:id="btnEstilo2" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClickEstilos" prefHeight="50.0" prefWidth="200.0" stylesheets="@../estilos/hojaprincipal.css" text="Hoja Estilos #2" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="DejaVu Sans Bold" size="14.0" />
                </font>
@@ -30,7 +30,7 @@
                   <Insets top="100.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btnEstilo3" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClickEstilos" prefHeight="50.0" prefWidth="200.0" stylesheets="@../estilos/hojaprincipal.css" text="Hoja Estilos #3" textAlignment="CENTER" textFill="WHITE">
+            <Button id="btnEstilo3" fx:id="btnEstilo3" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClickEstilos" prefHeight="50.0" prefWidth="200.0" stylesheets="@../estilos/hojaprincipal.css" text="Hoja Estilos #3" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="DejaVu Sans Bold" size="14.0" />
                </font>
@@ -39,11 +39,8 @@
                </VBox.margin>
             </Button>
          </children>
-         <HBox.margin>
-            <Insets right="10.0" />
-         </HBox.margin>
       </VBox>
-      <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="339.0" style="-fx-background-color: #B8C6FF;" styleClass="vBox2" HBox.hgrow="ALWAYS">
+      <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="508.0" style="-fx-background-color: #B8C6FF;" styleClass="vBox2">
          <children>
             <Button fx:id="btnControl1" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Boton" textAlignment="CENTER">
                <font>

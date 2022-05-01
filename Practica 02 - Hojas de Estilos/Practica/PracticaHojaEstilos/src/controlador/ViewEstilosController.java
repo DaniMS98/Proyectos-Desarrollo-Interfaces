@@ -20,6 +20,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 /**
@@ -45,43 +46,81 @@ public class ViewEstilosController implements Initializable {
     @FXML
     private ToggleButton btnControl5;
     
+    @FXML
+    private HBox hbox;
+    
     //Cambiar entre Hojas de Estilos
     
     @FXML
     private void onClickEstilos(ActionEvent event) throws IOException {
         
-       Object evnt = event.getSource();
+           Object evnt = event.getSource();
+       
+       //Guardamos los estilos en los resources
+        String estilo1 = this.getClass().getResource("/estilos/hoja1.css").toExternalForm();
+        String estilo2 = this.getClass().getResource("/estilos/hoja2.css").toExternalForm();
+        String estilo3 = this.getClass().getResource("/estilos/hoja3.css").toExternalForm();
+        String hojaPrincipal = this.getClass().getResource("/estilos/hojaprincipal.css").toExternalForm();
        
        //Si pulsamos el primer boton entonces cambia todo el estilo de los botones que hemos indicado
         
         if(evnt.equals(btnEstilo1)) {
             
-            Parent root = FXMLLoader.load(getClass().getResource("/vista/ViewEstilos.fxml"));
-            Scene scene = new Scene(root);
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            
-            scene.setUserAgentStylesheet("/estilos/hoja1.css");           
-            stage.setScene(scene);
-            stage.show();
+            if(hbox.getStylesheets().get(0).contains("hojaprincipal.css")) {
+
+                hbox.getStylesheets().remove(0);
+                hbox.getStylesheets().add(estilo1);
+
+            } else if(hbox.getStylesheets().get(0).contains("hoja2.css")) {
+
+                hbox.getStylesheets().remove(0);
+                hbox.getStylesheets().add(estilo1);
+
+            } else if(hbox.getStylesheets().get(0).contains("hoja3.css")) {
+
+                hbox.getStylesheets().remove(0);
+                hbox.getStylesheets().add(estilo1);
+
+            }
+           
         } else if(evnt.equals(btnEstilo2)) { //Lo mismo con el segundo boton
             
-            Parent root = FXMLLoader.load(getClass().getResource("/vista/ViewEstilos.fxml"));
-            Scene scene = new Scene(root);
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+             if(hbox.getStylesheets().get(0).contains("hojaprincipal.css")) {
+
+                hbox.getStylesheets().remove(0);
+                hbox.getStylesheets().add(estilo2);
+
+            } else if(hbox.getStylesheets().get(0).contains("hoja1.css")) {
+
+                hbox.getStylesheets().remove(0);
+                hbox.getStylesheets().add(estilo2);
+
+            } else if(hbox.getStylesheets().get(0).contains("hoja1.css")) {
+
+                hbox.getStylesheets().remove(0);
+                hbox.getStylesheets().add(estilo2);
+
+            }
             
-            scene.setUserAgentStylesheet("/estilos/hoja2.css");           
-            stage.setScene(scene);
-            stage.show();
         } else if(evnt.equals(btnEstilo3)) { //Lo mismo con el tercer boton
             
-            Parent root = FXMLLoader.load(getClass().getResource("/vista/ViewEstilos.fxml"));
-            Scene scene = new Scene(root);
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            
-            scene.setUserAgentStylesheet("/estilos/hoja3.css");           
-            stage.setScene(scene);
-            stage.show();
-        }
+             if(hbox.getStylesheets().get(0).contains("hojaprincipal.css")) {
+
+                hbox.getStylesheets().remove(0);
+                hbox.getStylesheets().add(estilo3);
+
+            } else if(hbox.getStylesheets().get(0).contains("hoja1.css")) {
+
+                hbox.getStylesheets().remove(0);
+                hbox.getStylesheets().add(estilo3);
+
+            } else if(hbox.getStylesheets().get(0).contains("hoja2.css")) {
+
+                hbox.getStylesheets().remove(0);
+                hbox.getStylesheets().add(estilo3);
+
+            }           
+        } 
         
     }
     
