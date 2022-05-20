@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="PracticaHojaEstilos.jnlp">
+  <information>
+    <title>PracticaHojaEstilos</title>
+    <vendor>Dani</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="PracticaHojaEstilos.jar" size="22740" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="800" height="600" main-class="practicahojaestilos.PracticaHojaEstilos"  name="PracticaHojaEstilos" />
+  <update check="always"/>
+</jnlp>
