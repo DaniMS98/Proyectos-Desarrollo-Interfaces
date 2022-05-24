@@ -5,4 +5,5 @@ module desarrollointerfaces.dms.proyectofinal {
 
     opens desarrollointerfaces.dms.proyectofinal to javafx.fxml;
     exports desarrollointerfaces.dms.proyectofinal;
+    requires javafx.graphics;
 }

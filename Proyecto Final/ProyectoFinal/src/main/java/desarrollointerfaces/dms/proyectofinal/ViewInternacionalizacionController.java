@@ -73,12 +73,9 @@ public class ViewInternacionalizacionController implements Initializable {
     ObservableList<Alumno> listaAlumnos;
     ObservableList<Alumno> alumnoSelected;
     ObservableList<Alumno> listPassAlumn;
-  
-    private ResourceBundle bundle;
-    private Locale locale;
-    private Stage stage;
-    private Scene scene;
     
+    private Stage stage;
+  
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
@@ -192,7 +189,7 @@ public class ViewInternacionalizacionController implements Initializable {
             Parent root = loader.load();
             
             //En el Stage indicamos el objeto Parent, las medidas y lo mostramos
-            stage = (Stage) btnIdiomaEspaña.getScene().getWindow();
+            stage = (Stage) btnAñadir.getScene().getWindow();
             stage.setScene(new Scene(root, 1000, 700));
             stage.show();
         
