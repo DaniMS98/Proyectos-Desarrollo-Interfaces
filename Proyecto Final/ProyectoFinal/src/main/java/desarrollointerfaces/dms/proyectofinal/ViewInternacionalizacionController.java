@@ -244,7 +244,7 @@ public class ViewInternacionalizacionController implements Initializable {
         
         //Indicamos el lugar donde se encuentra nuestro bundle.properties
         // y añadimos el archivo locale que hemos pasado en el metodo
-        loader.setResources(ResourceBundle.getBundle("desarrollointerfaces.dms.proyectofinal.idiomas.bundle", locale));
+        loader.setResources(ResourceBundle.getBundle("desarrollointerfaces.dms.proyectofinal.idioma.bundle", locale));
         
         try {
             //Carga todos los datos en un Parent
