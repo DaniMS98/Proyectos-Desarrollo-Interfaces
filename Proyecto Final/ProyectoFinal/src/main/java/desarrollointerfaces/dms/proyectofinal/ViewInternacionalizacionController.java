@@ -22,8 +22,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.input.InputMethodEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -33,7 +36,7 @@ public class ViewInternacionalizacionController implements Initializable {
     private ChoiceBox<String> cbSemana;
     
     @FXML
-    private Button btnIdiomaEspaña, btnIdiomaEEUU, btnIdiomaFrancia, btnIdiomaItalia, btnIdiomaReinoUnido;
+    private ToggleButton btnIdiomaEspaña, btnIdiomaEEUU, btnIdiomaFrancia, btnIdiomaItalia, btnIdiomaReinoUnido;
   
     @FXML
     private Button btnMostrar, btnAñadir;
@@ -79,6 +82,8 @@ public class ViewInternacionalizacionController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+        Locale localeActual = Locale.getDefault();   
+        
         //Creamos un Array de String donde vamos a introducir la key que nos
         //permitira acceder a los dias de la semana en diferentes idiomas
         //ubicados en sus respectivos bundles de idioma
@@ -114,11 +119,73 @@ public class ViewInternacionalizacionController implements Initializable {
         
         //Inicializamos la lista de Alumnos como un observable ArrayList
         listaAlumnos = FXCollections.observableArrayList();     
+        
+        ToggleGroup tg= new ToggleGroup();
+        tg.getToggles().addAll(btnIdiomaEspaña, btnIdiomaEEUU, btnIdiomaFrancia, btnIdiomaItalia, btnIdiomaReinoUnido);
+        
+        tg.selectedToggleProperty().addListener((observ, oldValue, newValue) -> {
+            
+            if(newValue != null) {
+                
+                ToggleButton tb = (ToggleButton) newValue.getToggleGroup().getSelectedToggle();
+                
+                               //Se comprueba el valor del Texto del ToggleButton        
+               switch (tb.getText()){
+                   
+                   case "EEUU":
+                       
+                       Locale.setDefault(new Locale("US"));
+                       
+                       break;  
+                   case "Frances":
+                       
+                       Locale.setDefault(new Locale("FR"));
+                       
+                       break;
+                   case "Italiano":
+                       
+                       Locale.setDefault(new Locale("IT"));
+                       
+                       break;
+                   
+                   case "Ingles":
+                       
+                       Locale.setDefault(new Locale("EN"));
+                       
+                       break;
+                       
+                    case "Español":
+                       
+                       Locale.setDefault(new Locale("ES"));
+                       
+                       break;  
+                       
+                    default:
+                       Locale.setDefault(new Locale("ES"));
+                       
+               }
+               
+               try {
+                   //Carga todos los datos en un Parent
+               Parent root = getFXMLLoader().load();
+               //En el Stage indicamos el objeto Parent, las medidas y lo mostramos
+               stage = (Stage) btnAñadir.getScene().getWindow();
+               stage.setScene(new Scene(root, 1000, 700));
+               stage.show(); 
+               } catch(IOException ex) {
+                   ex.printStackTrace();
+               }
+                  
+            }
+            
+        });
+        
     }
+    
 
     //Metodo que se iniciara cuando pulsemos cualquier boton de Idiomas.
     //Su funcion sera cambiar la Vista al idioma en el que hemos hecho click
-    @FXML
+    /**
     private void onClickButton(ActionEvent event) throws IOException {
         
         Object evt = event.getSource();
@@ -169,11 +236,11 @@ public class ViewInternacionalizacionController implements Initializable {
             LoadView(l);
             
         }
-    }
+    }*/
     
     //Metodo que se invoca cuando lo llamamos desde el metodo OnClickButton
     //para cargar una vista con el nuevo idioma
-    public void LoadView(Locale locale) {
+    /**public void LoadView(Locale locale) {
         //Creamos un objeto de tipo FXMLLoader
         FXMLLoader loader = new FXMLLoader();
         
@@ -196,7 +263,7 @@ public class ViewInternacionalizacionController implements Initializable {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-    }
+    }*/
 
     //Metodo que se invoca cuando pulsamos el boton Mostrar
     //Para ello deberemos haber seleccionado un Alumno en el TableView anteriormente
@@ -287,11 +354,32 @@ public class ViewInternacionalizacionController implements Initializable {
             
             stage.show();
             
-            Stage miStage = (Stage) this.btnAñadir.getScene().getWindow();
+            Stage miStage = (Stage) this.stage.getScene().getWindow();
             miStage.close();
             
-        }catch(Exception e) {
+        }catch(IOException e) {
             e.printStackTrace();
         }
     }
+
+    private FXMLLoader getFXMLLoader() {
+            
+        //Creamos un objeto de tipo FXMLLoader
+        FXMLLoader loader = new FXMLLoader();
+        
+        //Indicamos la localizacion de nuestra vista fxml
+        loader.setLocation(getClass().getResource("ViewIntern.fxml"));
+        
+        //Indicamos el lugar donde se encuentra nuestro bundle.properties
+        // y añadimos el archivo locale que hemos pasado en el metodo
+        loader.setResources(ResourceBundle.getBundle("desarrollointerfaces.dms.proyectofinal.idiomas.bundle", Locale.getDefault()));
+        
+        return loader;
+           
+    }
+
+    @FXML
+    private void onClickButton(InputMethodEvent event) {
+    }
+
 }
