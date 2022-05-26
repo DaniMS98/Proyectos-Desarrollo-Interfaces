@@ -137,20 +137,22 @@ public class ViewInternacionalizacionController implements Initializable {
                        Locale.setDefault(Locale.US);
                        
                        break;  
+                       
                    case "Frances":
                        
                        Locale.setDefault(Locale.FRANCE);
                        
                        break;
+                       
                    case "Italiano":
                        
-                       Locale.setDefault(Locale.ITALIAN);
+                       Locale.setDefault(Locale.ITALY);
                        
                        break;
                    
                    case "Ingles":
                        
-                       Locale.setDefault(Locale.ENGLISH);
+                       Locale.setDefault(Locale.UK);
                        
                        break; 
                        
