@@ -379,4 +379,5 @@ public class ViewInternacionalizacionController implements Initializable {
     private void onClickButton(InputMethodEvent event) {
     }
 
+
 }
